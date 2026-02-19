@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StayFit.ExercisePage"
+             BackgroundColor="{StaticResource Secondary}"
+             Title="ExercisePage">
+
+    <Grid>
+
+        <!-- Background Image -->
+        <Image Source="gymbg.jpg"
+               Aspect="AspectFill" />
+
+        <!-- Dark Overlay -->
+        <BoxView BackgroundColor="#80000000"/>
+
+        <!-- Main Layout -->
+        <Grid Padding="20"
+              RowDefinitions="Auto,Auto,*,Auto">
+
+            <!-- Header -->
+            <VerticalStackLayout Grid.Row="0"
+                                 HorizontalOptions="Center">
+
+                <Label x:Name="lblExerciseCount"
+                       Text="Exercise 2 / 3"
+                       TextColor="White"
+                       FontSize="18"
+                       HorizontalOptions="Center"/>
+
+                <Label x:Name="lblSetCount"
+                       Text="Set 3 / 5"
+                       TextColor="White"
+                       FontSize="16"
+                       HorizontalOptions="Center"/>
+            </VerticalStackLayout>
+
+            <!-- Circular Timer -->
+            <Grid Grid.Row="1"
+                  Margin="0,30">
+
+                <Frame HeightRequest="220"
+                       WidthRequest="220"
+                       CornerRadius="110"
+                       BorderColor="White"
+                       BackgroundColor="#40000000"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center">
+
+                    <VerticalStackLayout
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center">
+
+                        <Label x:Name="lblTimer"
+                               Text="10"
+                               FontSize="60"
+                               TextColor="White"
+                               HorizontalOptions="Center"/>
+
+                        <Label Text="SECONDS"
+                               FontSize="16"
+                               TextColor="White"
+                               HorizontalOptions="Center"/>
+
+                        <Label Text="♪"
+                               FontSize="20"
+                               TextColor="White"
+                               HorizontalOptions="Center"/>
+
+                    </VerticalStackLayout>
+                </Frame>
+            </Grid>
+
+            <!-- Exercise List -->
+            <VerticalStackLayout Grid.Row="2"
+                     Spacing="15"
+                     Padding="15,10">
+
+                <!-- Completed -->
+                <Frame BackgroundColor="#2E2E2E"
+           CornerRadius="20"
+           Padding="15"
+           HasShadow="False">
+
+                    <Grid ColumnDefinitions="Auto,*,Auto"
+              VerticalOptions="Center"
+              ColumnSpacing="10">
+
+                        <Label Text="✔"
+                   TextColor="Lime"
+                   FontSize="18"
+                   VerticalOptions="Center"/>
+
+                        <Label Text="Push-Ups"
+                   Grid.Column="1"
+                   TextColor="White"
+                   FontSize="16"
+                   VerticalOptions="Center"/>
+
+                        <Label Text="Completed"
+                   Grid.Column="2"
+                   TextColor="Lime"
+                   FontSize="14"
+                   VerticalOptions="Center"
+                   HorizontalTextAlignment="End"/>
+                    </Grid>
+                </Frame>
+
+                <!-- In Progress -->
+                <Frame BackgroundColor="#2E2E2E"
+           CornerRadius="20"
+           Padding="15"
+           HasShadow="False">
+
+                    <Grid ColumnDefinitions="Auto,*,Auto"
+              VerticalOptions="Center"
+              ColumnSpacing="10">
+
+                        <Label Text="●"
+                   TextColor="Orange"
+                   FontSize="18"
+                   VerticalOptions="Center"/>
+
+                        <Label Text="Squats"
+                   Grid.Column="1"
+                   TextColor="White"
+                   FontSize="16"
+                   VerticalOptions="Center"/>
+
+                        <Label Text="In Progress"
+                   Grid.Column="2"
+                   TextColor="Orange"
+                   FontSize="14"
+                   VerticalOptions="Center"
+                   HorizontalTextAlignment="End"/>
+                    </Grid>
+                </Frame>
+
+                <!-- Next -->
+                <Frame BackgroundColor="#2E2E2E"
+                   CornerRadius="20"
+                   Padding="15"
+                   HasShadow="False">
+
+                <Grid ColumnDefinitions="Auto,*,Auto"
+                  VerticalOptions="Center"
+                  ColumnSpacing="10">
+
+                 <Label Text="○"
+                   TextColor="Gray"
+                   FontSize="18"
+                   VerticalOptions="Center"/>
+
+                  <Label Text="Plank"
+                   Grid.Column="1"
+                   TextColor="White"
+                   FontSize="16"
+                   VerticalOptions="Center"/>
+
+                 <Label Text="Next Up"
+                   Grid.Column="2"
+                   TextColor="Gray"
+                   FontSize="14"
+                   VerticalOptions="Center"
+                   HorizontalTextAlignment="End"/>
+                    </Grid>
+                </Frame>
+
+            </VerticalStackLayout>
+
+
+            <!-- Bottom Rest Timer -->
+            <VerticalStackLayout Grid.Row="3"
+                                 Margin="0,20"
+                                 Spacing="10">
+
+                <ProgressBar x:Name="progressBar"
+                             Progress="0"
+                             HeightRequest="8"/>
+
+                <Label x:Name="lblRestTimer"
+                       Text="00:00"
+                       HorizontalOptions="Center"
+                       TextColor="White"/>
+
+            </VerticalStackLayout>
+
+        </Grid>
+
+    </Grid>
+
+</ContentPage>
