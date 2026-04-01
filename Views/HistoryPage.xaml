@@ -1,0 +1,166 @@
+<ContentPage
+    x:Class="StayFitz.Views.HistoryPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="{StaticResource Secondary}">
+
+    <Grid RowDefinitions="Auto,*">
+
+
+        <VerticalStackLayout Padding="15,20,15,10" Spacing="12">
+
+            <Frame
+                Padding="15"
+                BackgroundColor="#12344D"
+                CornerRadius="20"
+                HasShadow="True">
+
+                <VerticalStackLayout Spacing="5">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="24"
+                        Text="Workout History"
+                        TextColor="White" />
+
+                    <Label
+                        FontSize="14"
+                        Text="Track your progress 💪"
+                        TextColor="#B0BEC5" />
+                </VerticalStackLayout>
+
+            </Frame>
+
+            <Button
+                BackgroundColor="#FF3B30"
+                Command="{Binding ClearAllCommand}"
+                CornerRadius="10"
+                FontAttributes="Bold"
+                HeightRequest="45"
+                HorizontalOptions="End"
+                Text="Clear All History"
+                TextColor="White"
+                WidthRequest="140" />
+
+        </VerticalStackLayout>
+
+
+        <!--  🔥 HISTORY LIST  -->
+        <CollectionView
+            Grid.Row="1"
+            Margin="10"
+            ItemsSource="{Binding HistoryList}">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+
+                    <Frame
+                        Margin="0,6"
+                        Padding="15"
+                        BackgroundColor="#1C1F26"
+                        CornerRadius="18"
+                        HasShadow="True">
+
+                        <VerticalStackLayout Spacing="10">
+
+
+                            <Label
+                                FontSize="12"
+                                Text="{Binding Date, StringFormat='{}{0:dd MMM yyyy | hh:mm tt}'}"
+                                TextColor="#9E9E9E" />
+
+
+                            <Grid ColumnDefinitions="*,Auto" VerticalOptions="Center">
+
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="18"
+                                    Text="{Binding Mode}"
+                                    TextColor="#35E0A1" />
+
+                                <Button
+                                    Padding="5"
+                                    BackgroundColor="Transparent"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.DeleteCommand}"
+                                    CommandParameter="{Binding .}"
+                                    CornerRadius="20"
+                                    HeightRequest="60"
+                                    HorizontalOptions="End"
+                                    ImageSource="delete.png"
+                                    WidthRequest="50" />
+
+
+                            </Grid>
+                            <HorizontalStackLayout Spacing="15">
+
+
+                                <HorizontalStackLayout Spacing="5">
+
+                                    <Image
+                                        HeightRequest="40"
+                                        Source="calories.png"
+                                        WidthRequest="40" />
+
+                                    <Label
+                                        FontSize="20"
+                                        Text="{Binding Sets, StringFormat='{0} Sets'}"
+                                        TextColor="White" />
+
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Spacing="5">
+
+                                    <Image
+                                        HeightRequest="40"
+                                        Source="timer.png"
+                                        WidthRequest="40" />
+
+                                    <Label
+                                        FontSize="20"
+                                        Text="{Binding Duration, StringFormat='{0}s'}"
+                                        TextColor="White" />
+
+                                </HorizontalStackLayout>
+                            </HorizontalStackLayout>
+
+                            <Label
+                                FontSize="12"
+                                Text="Exercises"
+                                TextColor="#9E9E9E" />
+
+                            <CollectionView
+                                HeightRequest="40"
+                                ItemsLayout="HorizontalList"
+                                ItemsSource="{Binding Exercises}">
+
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+
+                                        <Frame
+                                            Margin="0,0,8,0"
+                                            Padding="10,5"
+                                            BackgroundColor="#2A2E35"
+                                            CornerRadius="15">
+
+                                            <Label
+                                                FontSize="12"
+                                                Text="{Binding .}"
+                                                TextColor="White" />
+
+                                        </Frame>
+
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+
+                            </CollectionView>
+
+                        </VerticalStackLayout>
+
+                    </Frame>
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+    </Grid>
+
+</ContentPage>

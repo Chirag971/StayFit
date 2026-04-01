@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="StayFitz.Views.DietTrackerPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="{StaticResource Secondary}">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!--  Title  -->
+            <Label
+                FontAttributes="Bold"
+                FontSize="24"
+                HorizontalOptions="Center"
+                Text="Diet Tracker" />
+
+            <!--  Calorie Card  -->
+            <Frame
+                Padding="20"
+                BackgroundColor="Black"
+                CornerRadius="25">
+
+                <VerticalStackLayout Spacing="15">
+
+                    <Label
+                        Padding="8"
+                        BackgroundColor="#8FD694"
+                        HorizontalOptions="Start"
+                        Text="{Binding GoalCalories, StringFormat='{0} kcal'}"
+                        TextColor="White" />
+
+                    <!--  Circular Progress Simulation  -->
+                    <Grid HorizontalOptions="Center">
+                        <ProgressBar
+                            HeightRequest="10"
+                            Progress="{Binding Progress}"
+                            ProgressColor="#8FD694"
+                            WidthRequest="200" />
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="28"
+                            HorizontalOptions="Center"
+                            Text="{Binding ConsumedCalories}" />
+                    </Grid>
+
+                    <!--  Macros  -->
+                    <CollectionView
+                        HeightRequest="80"
+                        ItemsLayout="HorizontalList"
+                        ItemsSource="{Binding Macros}">
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <VerticalStackLayout HorizontalOptions="Center" Spacing="5">
+
+                                    <Label HorizontalOptions="Center" Text="{Binding Percentage, StringFormat='{0}%'}" />
+
+                                    <Frame
+                                        Padding="8"
+                                        BackgroundColor="{Binding Color}"
+                                        CornerRadius="20">
+
+                                        <Label
+                                            HorizontalOptions="Center"
+                                            Text="{Binding Name}"
+                                            TextColor="White" />
+                                    </Frame>
+                                </VerticalStackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+
+                    </CollectionView>
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <!--  Meals  -->
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Diet Meals" />
+
+            <CollectionView ItemsSource="{Binding Meals}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame
+                            Margin="5"
+                            Padding="10"
+                            BackgroundColor="White"
+                            CornerRadius="20">
+
+                            <Grid ColumnDefinitions="80,*,Auto">
+
+                                <Image
+                                    Aspect="AspectFill"
+                                    HeightRequest="60"
+                                    Source="{Binding Image}"
+                                    WidthRequest="60" />
+
+                                <VerticalStackLayout Grid.Column="1">
+                                    <Label FontAttributes="Bold" Text="{Binding MealName}" />
+                                    <Label
+                                        FontSize="12"
+                                        Text="{Binding Time}"
+                                        TextColor="Gray" />
+                                    <Label FontSize="12" Text="{Binding Description}" />
+                                </VerticalStackLayout>
+
+                                <Label
+                                    Grid.Column="2"
+                                    Text="{Binding Calories}"
+                                    VerticalOptions="Center" />
+                            </Grid>
+
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!--  Weekly Progress  -->
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Weekly Progress" />
+
+            <CollectionView
+                HeightRequest="60"
+                ItemsLayout="HorizontalList"
+                ItemsSource="{Binding WeekDays}">
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame
+                            Margin="5"
+                            Padding="10"
+                            BackgroundColor="{Binding IsSelected, Converter={StaticResource BoolToColorConverter}}"
+                            CornerRadius="15">
+
+                            <Label HorizontalOptions="Center" Text="{Binding Day}" />
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

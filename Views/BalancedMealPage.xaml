@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="StayFitz.Views.BalancedMealPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="{StaticResource Secondary}">
+    <ScrollView>
+        <VerticalStackLayout Spacing="20">
+
+            <!--  Header Image  -->
+            <Image
+                Aspect="AspectFill"
+                HeightRequest="210"
+                Source="{Binding HeaderImage}" />
+
+            <VerticalStackLayout Padding="20" Spacing="20">
+
+                <!--  Title  -->
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="26"
+                    Text="{Binding Title}" />
+
+                <Frame
+                    Padding="8"
+                    BackgroundColor="#D8F3DC"
+                    CornerRadius="20"
+                    HorizontalOptions="Start">
+                    <Label Text="Diet Tips" TextColor="Green" />
+                </Frame>
+
+                <!--  Components Section  -->
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    Text="Components of a Balanced Meal" />
+
+                <CollectionView ItemsLayout="HorizontalList" ItemsSource="{Binding Components}">
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame
+                                Margin="5"
+                                Padding="15"
+                                BackgroundColor="White"
+                                CornerRadius="20"
+                                WidthRequest="150">
+
+                                <VerticalStackLayout Spacing="10">
+                                    <Image HeightRequest="100" Source="{Binding Icon}" />
+
+                                    <Label FontAttributes="Bold" Text="{Binding Title}" />
+
+                                    <Label
+                                        FontSize="15"
+                                        Text="{Binding Description}"
+                                        TextColor="Black" />
+                                </VerticalStackLayout>
+
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <!--  Daily Meal Plan  -->
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    Text="Daily Meal Plan" />
+
+                <CollectionView ItemsSource="{Binding DailyMeals}">
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame
+                                Margin="5"
+                                Padding="15"
+                                BackgroundColor="Black"
+                                CornerRadius="15">
+
+                                <VerticalStackLayout Spacing="8">
+
+                                    <Grid ColumnDefinitions="*,Auto">
+                                        <Label FontAttributes="Bold" Text="{Binding MealName}" />
+
+                                        <Label
+                                            Grid.Column="1"
+                                            Text="{Binding Calories, StringFormat='{0} kcal'}"
+                                            TextColor="Green" />
+                                    </Grid>
+
+                                    <Label
+                                        FontSize="12"
+                                        Text="{Binding Time}"
+                                        TextColor="Gray" />
+
+                                    <Label FontSize="13" Text="{Binding Description}" />
+
+                                </VerticalStackLayout>
+
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <!--  Log Snack Button  -->
+                <Button
+                    BackgroundColor="#8FD694"
+                    Command="{Binding LogSnackCommand}"
+                    CornerRadius="25"
+                    HeightRequest="55"
+                    Text="Log Snacks" />
+
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

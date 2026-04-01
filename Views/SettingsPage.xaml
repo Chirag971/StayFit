@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="StayFitz.Views.SettingsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:res="clr-namespace:StayFitz.Resources.Localization"
+    xmlns:vm="clr-namespace:StayFitz.ViewModels"
+    BackgroundColor="{StaticResource Secondary}">
+
+    <ScrollView>
+
+        <!--<Label Text="mmaui"></Label>-->
+        <VerticalStackLayout Padding="20" Spacing="25">
+
+
+            <!--  Profile Section  -->
+
+            <VerticalStackLayout HorizontalOptions="Center">
+
+                <Frame
+                    Padding="0"
+                    BorderColor="Gray"
+                    CornerRadius="60"
+                    HeightRequest="120"
+                    IsClippedToBounds="True"
+                    WidthRequest="120">
+
+                    <Image Aspect="AspectFill" Source="{Binding ProfileImage}" />
+                </Frame>
+
+                <Button
+                    Margin="0,10,0,0"
+                    Command="{Binding UploadPhotoCommand}"
+                    Text="{x:Static res:AppResources.UploadPhotoText}" />
+            </VerticalStackLayout>
+
+
+            <!--  Settings Title  -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="20"
+                Text="{x:Static res:AppResources.LanguageTitle}" />
+
+
+            <!--  Language Picker  -->
+
+            <Picker
+                Title="{x:Static res:AppResources.SelectLanguageText}"
+                ItemsSource="{Binding Languages}"
+                SelectedItem="{Binding SelectedLanguage}" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

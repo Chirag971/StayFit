@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespace StayFit
+namespace StayFitz
 {
     public class Program
     {

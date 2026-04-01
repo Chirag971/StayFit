@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="StayFitz.Views.SplashPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:StayFitz.ViewModels">
+
+    <!--<Grid>
+        <VerticalStackLayout
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            Spacing="20">
+
+    -->
+    <!--  Logo Circle  -->
+    <!--
+            <Frame
+                HeightRequest="140"
+                WidthRequest="140"
+                CornerRadius="70"
+                BackgroundColor="{StaticResource Primary}"
+                HasShadow="True"
+                HorizontalOptions="Center">
+
+                <Label
+                    Text="SF"
+                    FontSize="48"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    TextColor="White"
+                    FontAttributes="Bold"/>
+            </Frame>
+
+            <Label
+                Text="StayFitz"
+                FontSize="34"
+                FontAttributes="Bold"
+                TextColor="White"
+                HorizontalOptions="Center"/>
+
+            <ActivityIndicator
+                IsRunning="True"
+                Color="{StaticResource Accent}"
+                Margin="0,30,0,0"/>
+
+        </VerticalStackLayout>
+    </Grid>-->
+
+
+
+    <Grid>
+
+        <!--  Gradient Background  -->
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Offset="0.0" Color="#6EB6FF" />
+                <GradientStop Offset="0.5" Color="#6ED4C5" />
+                <GradientStop Offset="1.0" Color="#9BE37F" />
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <!--  Center Content  -->
+        <VerticalStackLayout
+            HorizontalOptions="Center"
+            Spacing="20"
+            VerticalOptions="Center">
+
+            <!--  Logo  -->
+            <Image
+                Aspect="AspectFit"
+                HeightRequest="120"
+                Source="stayfitz.png"
+                WidthRequest="120" />
+
+            <!--  App Name  -->
+            <Label
+                FontAttributes="Bold"
+                FontSize="36"
+                HorizontalOptions="Center"
+                IsVisible="False"
+                Text="StayFitz"
+                TextColor="#2C2C2C" />
+
+        </VerticalStackLayout>
+
+    </Grid>
+
+</ContentPage>

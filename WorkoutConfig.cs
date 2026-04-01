@@ -4,13 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StayFit
+namespace StayFitz
 {
-    public class WorkoutConfig
+    public enum WorkoutMode
     {
-            public int Exercises { get; set; }
-            public int Sets { get; set; }
-            public int Duration { get; set; }
-            public int Gap { get; set; }
+        ExerciseWise,
+        SetWise
     }
 }

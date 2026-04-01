@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="StayFitz.Views.ShopDetailPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="ProductDetailPage">
+    <ScrollView>
+        <VerticalStackLayout Padding="15" Spacing="15">
+
+            <!--  Product Image  -->
+            <Image
+                Aspect="AspectFit"
+                HeightRequest="220"
+                Source="{Binding ImageSource}" />
+
+            <!--  Brand  -->
+
+            <!--  Title  -->
+            <Label
+                FontAttributes="Bold"
+                FontSize="20"
+                Text="{Binding Title}" />
+
+
+            <!--  Brand  -->
+            <Label
+                FontSize="14"
+                Text="{Binding BrandName}"
+                TextColor="Gray" />
+
+            <!--  Full Description  -->
+            <Label
+                FontAttributes="Bold"
+                FontSize="16"
+                Text="Product Details" />
+
+            <Label
+                FontSize="14"
+                Text="{Binding FullDescription}"
+                TextColor="Gray" />
+            <!--  Price  -->
+            <Label
+                FontAttributes="Bold"
+                FontSize="25"
+                Text="{Binding PriceText}"
+                TextColor="Green" />
+
+            <!--  Quantity Section  -->
+            <HorizontalStackLayout Spacing="15" VerticalOptions="End">
+
+                <Button
+                    Command="{Binding DecreaseCommand}"
+                    FontSize="20"
+                    Text="-"
+                    WidthRequest="40" />
+
+                <Label
+                    FontSize="18"
+                    Text="{Binding Quantity}"
+                    VerticalOptions="Center" />
+
+                <Button
+                    Command="{Binding IncreaseCommand}"
+                    FontSize="20"
+                    Text="+"
+                    WidthRequest="40" />
+
+            </HorizontalStackLayout>
+
+            <!--  Add to Cart  -->
+            <!--
+            <Button
+                BackgroundColor="{StaticResource Primary}"
+                Command="{Binding AddToCartCommand}"
+                CornerRadius="20"
+                HeightRequest="50"
+                Text="Add To Cart"
+                TextColor="White" />-->
+
+            <!--  Buy  -->
+            <Button
+                BackgroundColor="{StaticResource Primary}"
+                Command="{Binding AddToCartCommand}"
+                CornerRadius="20"
+                FontSize="20"
+                HeightRequest="40"
+                Text="Buy"
+                TextColor="White" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,135 @@
+<ContentPage
+    x:Class="StayFitz.Views.ReminderPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="{StaticResource Secondary}">
+    <ScrollView>
+        <Grid RowDefinitions="Auto,*">
+            <!--  🔷 TOP FORM  -->
+
+            <VerticalStackLayout Padding="20" Spacing="18">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="26"
+                    HorizontalOptions="Center"
+                    Text="🔔 Reminder"
+                    TextColor="White" />
+                <!--  TYPE  -->
+                <Frame BackgroundColor="#123B5A" CornerRadius="12">
+                    <VerticalStackLayout>
+                        <Label Text="Select Type" TextColor="White" />
+                        <Picker
+                            ItemsSource="{Binding ReminderTypes}"
+                            SelectedItem="{Binding SelectedType}"
+                            TextColor="White" />
+                    </VerticalStackLayout>
+                </Frame>
+                <!--  DATE  -->
+                <Frame BackgroundColor="#123B5A" CornerRadius="12">
+                    <VerticalStackLayout>
+                        <Label Text="Select Date" TextColor="White" />
+                        <DatePicker Date="{Binding SelectedDate}" TextColor="White" />
+                    </VerticalStackLayout>
+                </Frame>
+                <!--  TIME  -->
+                <Frame BackgroundColor="#123B5A" CornerRadius="12">
+                    <VerticalStackLayout>
+                        <Label Text="Select Time" TextColor="White" />
+                        <TimePicker TextColor="White" Time="{Binding SelectedTime}" />
+                    </VerticalStackLayout>
+                </Frame>
+                <!--  MESSAGE  -->
+                <Frame BackgroundColor="#123B5A" CornerRadius="12">
+                    <VerticalStackLayout>
+                        <Label Text="Message" TextColor="White" />
+                        <Entry
+                            Placeholder="Enter reminder message"
+                            Text="{Binding Message}"
+                            TextColor="White" />
+                    </VerticalStackLayout>
+                </Frame>
+                <!--  MUSIC  -->
+                <Frame BackgroundColor="#123B5A" CornerRadius="12">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Select Music 🎵" TextColor="White" />
+                        <Button
+                            BackgroundColor="Orange"
+                            Command="{Binding PickMusicCommand}"
+                            Text="Choose Music"
+                            TextColor="White" />
+                        <Label
+                            FontSize="12"
+                            Text="{Binding MusicName}"
+                            TextColor="LightGray" />
+                    </VerticalStackLayout>
+                </Frame>
+                <!--  SAVE BUTTON  -->
+                <Button
+                    BackgroundColor="#FF7A18"
+                    Command="{Binding SaveReminderCommand}"
+                    CornerRadius="25"
+                    HeightRequest="50"
+                    Text="Save Reminder"
+                    TextColor="White" />
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="20"
+                    Text="Your Reminders"
+                    TextColor="White" />
+            </VerticalStackLayout>
+
+            <!--  🔷 LIST (SEPARATE SCROLL)  -->
+            <CollectionView
+                Grid.Row="1"
+                Margin="10"
+                ItemsSource="{Binding Reminders}"
+                SelectedItem="{Binding SelectedReminder}"
+                SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame
+                            Margin="5"
+                            Padding="10"
+                            BackgroundColor="#2E4F70"
+                            CornerRadius="15">
+                            <Grid ColumnDefinitions="*,Auto,Auto" ColumnSpacing="50">
+                                <VerticalStackLayout Spacing="4">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="16"
+                                        Text="{Binding Message}"
+                                        TextColor="White" />
+                                    <Label
+                                        FontSize="12"
+                                        Text="{Binding Type}"
+                                        TextColor="#2ECC71" />
+                                    <Label
+                                        FontSize="12"
+                                        Text="{Binding ReminderDateTime, StringFormat='{0:dd MMM yyyy hh:mm tt}'}"
+                                        TextColor="LightGray" />
+                                </VerticalStackLayout>
+                                <ImageButton
+                                    Grid.Column="1"
+                                    BackgroundColor="Transparent"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.EditReminderCommand}"
+                                    CommandParameter="{Binding .}"
+                                    HeightRequest="30"
+                                    HorizontalOptions="Start"
+                                    Source="edit1.png"
+                                    WidthRequest="30" />
+                                <ImageButton
+                                    Grid.Column="2"
+                                    BackgroundColor="Transparent"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.DeleteReminderCommand}"
+                                    CommandParameter="{Binding .}"
+                                    HeightRequest="30"
+                                    Source="delete.png"
+                                    WidthRequest="30" />
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ScrollView>
+</ContentPage>

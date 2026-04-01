@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="StayFitz.Views.ProgressPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:charts="clr-namespace:Microcharts.Maui;assembly=Microcharts.Maui"
+    Title="ProgressPage"
+    BackgroundColor="#0A2A43">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!--  TITLE  -->
+            <Label
+                FontAttributes="Bold"
+                FontSize="24"
+                Text="Weekly Progress"
+                TextColor="White" />
+
+            <!--  GRAPH CARD  -->
+            <Frame
+                Padding="15"
+                BackgroundColor="#1C1F26"
+                CornerRadius="20"
+                HasShadow="True">
+
+                <charts:ChartView Chart="{Binding WeeklyChart}" HeightRequest="250" />
+
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

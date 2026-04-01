@@ -1,23 +1,87 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Shell
-    x:Class="StayFit.AppShell"
+    x:Class="StayFitz.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:StayFit"
-    Shell.FlyoutBehavior="Disabled"
-    Title="StayFit">
+    xmlns:local="clr-namespace:StayFitz.Views"
+    FlyoutBackgroundColor="MediumPurple"
+    Shell.BackgroundColor="{StaticResource Secondary}"
+    Shell.FlyoutBehavior="Flyout"
+    Shell.ForegroundColor="White"
+    Shell.NavBarIsVisible="True">
+    <Shell.TitleView>
+        <Grid>
+            <Label
+                Margin="0,0,65,0"
+                FontAttributes="Bold"
+                FontSize="20"
+                HorizontalOptions="Center"
+                Text="StayFitz"
+                TextColor="White"
+                VerticalOptions="Center" />
+        </Grid>
+    </Shell.TitleView>
 
-    <!--<ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />-->
-    
-    <ShellContent
-     ContentTemplate="{DataTemplate local:SplashPage}"
-     Route="SplashPage" />
+    <ShellContent ContentTemplate="{DataTemplate local:LoginPage}" Route="LoginPage" />
 
-    <!--<ShellContent
-      ContentTemplate="{DataTemplate local:ExercisePage}"
-      Route="SplashPage" />-->
 
+    <!--<TabBar>
+        <ShellContent
+            Title="Home"
+            ContentTemplate="{DataTemplate local:ProductPage}"
+            Icon="home.png"
+            Route="ProductPage" />
+        <ShellContent
+            Title="Shop"
+            ContentTemplate="{DataTemplate local:ShopPage}"
+            Icon="product.png"
+            Route="ShopPage" />
+        <ShellContent
+            Title="Profile"
+            ContentTemplate="{DataTemplate local:ProfilePage}"
+            Icon="profile.png"
+            Route="ProfilePage" />
+    </TabBar>-->
+
+    <TabBar>
+        <Tab Title="Home" Icon="home.png">
+            <ShellContent ContentTemplate="{DataTemplate local:ProductPage}" Route="ProductPage" />
+        </Tab>
+
+        <Tab Title="Shop" Icon="product.png">
+            <ShellContent ContentTemplate="{DataTemplate local:ShopPage}" Route="ShopPage" />
+        </Tab>
+
+        <Tab Title="Profile" Icon="profile.png">
+            <ShellContent ContentTemplate="{DataTemplate local:ProfilePage}" Route="ProfilePage" />
+        </Tab>
+        <Tab Title="Reminder" Icon="reminder.png">
+            <ShellContent ContentTemplate="{DataTemplate local:ReminderPage}" Route="RemindePage" />
+        </Tab>
+    </TabBar>
+
+    <FlyoutItem
+        Title="Profile"
+        Icon="profile.png"
+        Route="ProfilePage">
+        <ShellContent Title="Profile" ContentTemplate="{DataTemplate local:ProfilePage}" />
+    </FlyoutItem>
+
+    <FlyoutItem
+        Title="Settings"
+        Icon="setting.png"
+        Route="SettingsPage">
+        <ShellContent Title="Settings" ContentTemplate="{DataTemplate local:SettingsPage}" />
+    </FlyoutItem>
+
+
+    <MenuItem
+        Clicked="OnThemeChanged"
+        IconImageSource="{Binding ThemeIcon}"
+        Text="{Binding ThemeText}" />
+
+    <MenuItem
+        Clicked="OnLogoutClicked"
+        IconImageSource="logout.png"
+        Text="Logout" />
 </Shell>

@@ -2,7 +2,7 @@ using System;
 using Microsoft.Maui;
 using Microsoft.Maui.Hosting;
 
-namespace StayFit
+namespace StayFitz
 {
     internal class Program : MauiApplication
     {

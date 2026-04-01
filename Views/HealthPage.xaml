@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="StayFitz.Views.HealthPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:StayFitz.ViewModels"
+    BackgroundColor="{StaticResource Secondary}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!--  Search Bar  -->
+            <SearchBar
+                BackgroundColor="White"
+                Placeholder="Search health topics..."
+                Text="{Binding SearchText}"
+                TextColor="White" />
+
+            <!--  Categories  -->
+            <CollectionView
+                HeightRequest="60"
+                ItemsLayout="HorizontalList"
+                ItemsSource="{Binding Categories}">
+
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame
+                            Padding="12"
+                            BackgroundColor="{Binding BackgroundColor}"
+                            CornerRadius="25">
+
+                            <HorizontalStackLayout Spacing="8">
+
+                                <Image
+                                    HeightRequest="20"
+                                    Source="{Binding Icon}"
+                                    WidthRequest="50" />
+
+                                <Label
+                                    BackgroundColor="{Binding BackgroundColor}"
+                                    FontAttributes="Bold"
+                                    Text="{Binding Name}"
+                                    TextColor="Black"
+                                    VerticalOptions="Center" />
+
+                            </HorizontalStackLayout>
+
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.CategoryCommand}" CommandParameter="{Binding Name}" />
+                            </Frame.GestureRecognizers>
+
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!--  Articles  -->
+            <CollectionView ItemsSource="{Binding Articles}">
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame
+                            Margin="0,10"
+                            Padding="15"
+                            BackgroundColor="{StaticResource CardBg}"
+                            CornerRadius="20">
+
+                            <VerticalStackLayout Spacing="10">
+
+                                <Image
+                                    Aspect="AspectFill"
+                                    HeightRequest="180"
+                                    Source="{Binding Image}" />
+
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="20"
+                                    Text="{Binding Title}"
+                                    TextColor="White" />
+
+                                <Label
+                                    LineBreakMode="TailTruncation"
+                                    MaxLines="2"
+                                    Text="{Binding Description}" />
+
+                            </VerticalStackLayout>
+
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ArticleCommand}" CommandParameter="{Binding .}" />
+                            </Frame.GestureRecognizers>
+
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

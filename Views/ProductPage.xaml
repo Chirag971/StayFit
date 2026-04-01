@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="StayFitz.Views.ProductPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:vm="clr-namespace:StayFitz.ViewModels"
+    BackgroundColor="{StaticResource Secondary}"
+    Shell.NavBarIsVisible="True">
+
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" />
+    </Shell.BackButtonBehavior>
+
+    <Grid Padding="10" RowDefinitions="Auto,*,Auto">
+
+        <!--<Grid
+            Grid.Row="0"
+            Margin="0,0,0,10"
+            ColumnDefinitions="*,Auto,Auto">
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="20"
+                Text="Products"
+                TextColor="White"
+                VerticalOptions="Center" />
+
+
+        -->
+        <!--  LOGOUT  -->
+        <!--
+            <Button
+                Grid.Column="2"
+                BackgroundColor="White"
+                Command="{Binding LogoutCommand}"
+                FontSize="12"
+                ImageSource="logout.png"
+                Text="Logout"
+                TextColor="White" />
+
+        </Grid>-->
+        <Grid
+            Grid.Row="0"
+            Margin="0,0,0,10"
+            ColumnDefinitions="*,Auto,Auto">
+
+            <!--<Label
+                FontAttributes="Bold"
+                FontSize="20"
+                Text="Products"
+                TextColor="White"
+                VerticalOptions="Center" />-->
+
+            <!--  LOGOUT BUTTON  -->
+            <!--<Button
+                Grid.Column="2"
+                Padding="10,5"
+                Command="{Binding LogoutCommand}"
+                ContentLayout="Left,8"
+                FontSize="12"
+                HeightRequest="40"
+                ImageSource="logout.png"
+                TextColor="Black" />-->
+
+        </Grid>
+        <CollectionView
+            Grid.Row="1"
+            Margin="10,5"
+            ItemsSource="{Binding Options}"
+            SelectionMode="None">
+
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout
+                    HorizontalItemSpacing="10"
+                    Orientation="Vertical"
+                    Span="{OnIdiom Phone=1,
+                                   Tablet=2,
+                                   Desktop=2}"
+                    VerticalItemSpacing="15" />
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame
+                        Padding="0"
+                        BackgroundColor="{Binding Color}"
+                        CornerRadius="25"
+                        HasShadow="True"
+                        HeightRequest="{OnIdiom Phone=140,
+                                                Tablet=180,
+                                                Desktop=190}">
+
+                        <Grid>
+
+                            <!--  Tap Gesture  -->
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.OptionSelectedCommand}" CommandParameter="{Binding .}" />
+                            </Grid.GestureRecognizers>
+
+                            <!--  Content  -->
+                            <VerticalStackLayout
+                                Padding="15"
+                                HorizontalOptions="Center"
+                                Spacing="8"
+                                VerticalOptions="Center">
+
+                                <Image
+                                    Aspect="AspectFit"
+                                    HeightRequest="90"
+                                    Source="{Binding Image}"
+                                    WidthRequest="90" />
+
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="16"
+                                    HorizontalTextAlignment="Center"
+                                    Text="{Binding Title}"
+                                    TextColor="White" />
+
+                            </VerticalStackLayout>
+
+                        </Grid>
+
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <!--<Frame
+            Grid.Row="2"
+            Margin="{OnIdiom Phone=0,
+                             Tablet=50,
+                             Desktop=50}"
+            Padding="20"
+            BackgroundColor="{StaticResource CardBg}"
+            CornerRadius="20"
+            HasShadow="True">
+
+            <VerticalStackLayout Spacing="10">
+
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    Text="🔥 DAILY MOTIVATION"
+                    TextColor="#FFA500" />
+
+
+                <Label
+                    FontSize="15"
+                    LineBreakMode="WordWrap"
+                    Text="{Binding DailyMotivation}"
+                    TextColor="White" />
+
+            </VerticalStackLayout>
+
+        </Frame>-->
+    </Grid>
+</ContentPage>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="StayFitz.Controls.AudioBars"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    HorizontalOptions="FillAndExpand">
+    <!--<Grid
+        ColumnDefinitions="Auto,Auto,Auto,auto,0.5*,*"
+        ColumnSpacing="2"
+        HeightRequest="20"
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="Center">
+        <Grid.GestureRecognizers>
+            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+        </Grid.GestureRecognizers>
+    -->
+    <!--  Bar 1  -->
+    <!--
+        <BoxView
+            x:Name="Bar1"
+            Grid.Column="0"
+            HeightRequest="20"
+            VerticalOptions="End"
+            WidthRequest="10"
+            Color="Purple" />
+    -->
+    <!--  Bar 2  -->
+    <!--
+        <BoxView
+            x:Name="Bar2"
+            Grid.Column="1"
+            HeightRequest="15"
+            VerticalOptions="End"
+            WidthRequest="10"
+            Color="Purple" />
+    -->
+    <!--  Bar 3  -->
+    <!--
+        <BoxView
+            x:Name="Bar3"
+            Grid.Column="2"
+            HeightRequest="20"
+            VerticalOptions="End"
+            WidthRequest="10"
+            Color="Purple" />
+        <BoxView
+            x:Name="Bar4"
+            Grid.Column="3"
+            HeightRequest="15"
+            VerticalOptions="End"
+            WidthRequest="10"
+            Color="Purple" />
+
+        <Slider
+            x:Name="sliderVolume"
+            Grid.Column="4"
+            BackgroundColor="White"
+            HorizontalOptions="End"
+            Maximum="2"
+            MaximumTrackColor="Purple"
+            Minimum="0"
+            MinimumTrackColor="Orange"
+            ThumbColor="Purple"
+            ValueChanged="Slider_ValueChanged"
+            VerticalOptions="End"
+            WidthRequest="100"
+            Value="5" />
+    </Grid>-->
+
+    <Frame
+        Padding="10"
+        BackgroundColor="#0B1E2D"
+        CornerRadius="15"
+        HasShadow="False">
+
+        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="15">
+
+            <!--  AUDIO BARS  -->
+            <Grid
+                x:Name="BarsGrid"
+                Grid.Column="0"
+                ColumnDefinitions="Auto,Auto,Auto,Auto"
+                ColumnSpacing="5"
+                VerticalOptions="End">
+
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                </Grid.GestureRecognizers>
+
+                <BoxView
+                    x:Name="Bar1"
+                    Grid.Column="0"
+                    HeightRequest="20"
+                    WidthRequest="6"
+                    Color="#B000B5" />
+                <BoxView
+                    x:Name="Bar2"
+                    Grid.Column="1"
+                    HeightRequest="14"
+                    WidthRequest="6"
+                    Color="#B000B5" />
+                <BoxView
+                    x:Name="Bar3"
+                    Grid.Column="2"
+                    HeightRequest="20"
+                    WidthRequest="6"
+                    Color="#B000B5" />
+                <BoxView
+                    x:Name="Bar4"
+                    Grid.Column="3"
+                    HeightRequest="14"
+                    WidthRequest="6"
+                    Color="#B000B5" />
+
+            </Grid>
+
+            <!--  SLIDER  -->
+            <Slider
+                x:Name="sliderVolume"
+                Grid.Column="1"
+                Maximum="1"
+                MaximumTrackColor="#FFD580"
+                Minimum="0"
+                MinimumTrackColor="#9B00FF"
+                ThumbColor="#FF8C00"
+                ValueChanged="Slider_ValueChanged"
+                VerticalOptions="Center"
+                WidthRequest="130"
+                Value="0.5" />
+
+        </Grid>
+
+    </Frame>
+
+</ContentView>

@@ -1,0 +1,49 @@
+﻿[
+    {
+        "Name": "Push-up",
+        "Category": "Chest",
+        "Icon": "pushup.png"
+    },
+
+    {
+        "Name": "Bench Press",
+        "Category": "Chest",
+        "Icon": "benchpress.png"
+    },
+    {
+        "Name": "Squat",
+        "Category": "Legs",
+        "Icon": "squats.png"
+    },
+    {
+        "Name": "Lunges",
+        "Category": "Legs",
+        "Icon": "lunges.png"
+    },
+    {
+        "Name": "Plank",
+        "Category": "Core",
+        "Icon": "plank.png"
+
+    },
+    {
+        "Name": "Situp",
+        "Category": "Core",
+        "Icon": "situp.png"
+    },
+    {
+        "Name": "Pull-up",
+        "Category": "Back",
+        "Icon": "pullup.png"
+    },
+    {
+        "Name": "Deadlift",
+        "Category": "Back",
+        "Icon": "deadlift.png"
+    },
+    {
+        "Name": "Yoga",
+        "Category": "Yoga",
+        "Icon": "Yoga.png"
+    }
+]

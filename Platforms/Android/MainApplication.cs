@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.Runtime;
 
-namespace StayFit
+namespace StayFitz
 {
     [Application]
     public class MainApplication : MauiApplication

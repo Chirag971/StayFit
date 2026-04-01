@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="StayFitz.Views.HomePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:model="clr-namespace:StayFitz.Models"
+    xmlns:vm="clr-namespace:StayFitz.ViewModels"
+    x:DataType="vm:HomePageViewModel"
+    BackgroundColor="{StaticResource Secondary}">
+
+    <Grid RowDefinitions="*,Auto">
+
+        <!--  MAIN CONTENT  -->
+        <ScrollView>
+            <VerticalStackLayout Padding="15" Spacing="15">
+
+                <!--  ADD EXERCISE  -->
+                <Frame
+                    Padding="15"
+                    BackgroundColor="{StaticResource CardBg}"
+                    CornerRadius="20">
+                    <VerticalStackLayout Spacing="10">
+
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="18"
+                            Text="Add Exercise"
+                            TextColor="White" />
+
+                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+
+                            <!--<Entry
+                                Grid.Column="0"
+                                Margin="0"
+                                BackgroundColor="White"
+                                HeightRequest="45"
+                                Placeholder="Exercise name"
+                                Text="{Binding NewExerciseName}"
+                                TextColor="Black" />-->
+                            <Entry
+                                Grid.Column="0"
+                                Margin="0"
+                                BackgroundColor="White"
+                                HeightRequest="45"
+                                Placeholder="Exercise name"
+                                Text="{Binding NewExerciseName}"
+                                TextChanged="OnTextChanged"
+                                TextColor="Black" />
+
+                            <Button
+                                Grid.Column="1"
+                                BackgroundColor="{StaticResource Primary}"
+                                Command="{Binding AddExerciseCommand}"
+                                CornerRadius="10"
+                                HeightRequest="45"
+                                Text="Add"
+                                TextColor="White" />
+                            <!--<Button
+                                BackgroundColor="#35E0A1"
+                                Command="{Binding GoToHistoryCommand}"
+                                CornerRadius="25"
+                                Text="📜 History"
+                                TextColor="Black" />-->
+                        </Grid>
+                        <CollectionView
+                            IsVisible="{Binding IsSuggestionVisible}"
+                            ItemsSource="{Binding FilteredExercises}"
+                            SelectionChanged="OnSuggestionSelected"
+                            SelectionMode="Single">
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="model:Exercise">
+
+                                    <Grid Padding="5" ColumnDefinitions="40,*">
+
+                                        <Image
+                                            HeightRequest="30"
+                                            Source="{Binding Icon}"
+                                            WidthRequest="30" />
+
+                                        <Label
+                                            Grid.Column="1"
+                                            Text="{Binding Name}"
+                                            TextColor="White"
+                                            VerticalOptions="Center" />
+
+                                    </Grid>
+
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        <Button
+                            BackgroundColor="{StaticResource Primary}"
+                            Command="{Binding GoToHistoryCommand}"
+                            CornerRadius="20"
+                            HeightRequest="40"
+                            Text="History"
+                            TextColor="White"
+                            WidthRequest="100" />
+                    </VerticalStackLayout>
+
+                </Frame>
+
+                <!--  SELECT EXERCISES  -->
+                <Label
+                    Margin="5,0"
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    Text="Select Exercises"
+                    TextColor="White" />
+
+                <CollectionView ItemsSource="{Binding AllExercises}" SelectionMode="None">
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:ExerciseItem">
+
+                            <Frame
+                                Margin="0,5"
+                                Padding="12"
+                                BackgroundColor="{StaticResource CardBg}"
+                                CornerRadius="15">
+
+                                <Grid ColumnDefinitions="40,*,Auto,Auto" ColumnSpacing="10">
+
+                                    <!--  ICON  -->
+                                    <Image
+                                        HeightRequest="35"
+                                        Source="{Binding Icon}"
+                                        WidthRequest="35" />
+
+                                    <!--  NAME  -->
+                                    <Label
+                                        Grid.Column="1"
+                                        Text="{Binding Name}"
+                                        TextColor="White"
+                                        VerticalOptions="Center" />
+
+                                    <!--  CHECKBOX  -->
+                                    <CheckBox
+                                        Grid.Column="2"
+                                        IsChecked="{Binding IsSelected}"
+                                        VerticalOptions="Center" />
+
+                                    <!--  DELETE BUTTON  -->
+                                    <ImageButton
+                                        Grid.Column="3"
+                                        BackgroundColor="Transparent"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:HomePageViewModel}}, Path=DeleteExerciseCommand}"
+                                        CommandParameter="{Binding .}"
+                                        HeightRequest="30"
+                                        Source="delete.png"
+                                        WidthRequest="30" />
+
+                                </Grid>
+
+                            </Frame>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <!--  WORKOUT SETTINGS  -->
+                <Label
+                    Margin="5,10,0,0"
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    Text="Workout Settings"
+                    TextColor="White" />
+
+                <VerticalStackLayout BindableLayout.ItemsSource="{Binding Inputs}" Spacing="10">
+
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="model:WorkoutInput">
+
+                            <Frame
+                                Padding="15"
+                                BackgroundColor="{StaticResource CardBg}"
+                                CornerRadius="20">
+
+                                <VerticalStackLayout Spacing="5">
+
+                                    <Grid ColumnDefinitions="*,Auto">
+
+                                        <Label Text="{Binding Title}" TextColor="White" />
+
+                                        <Label
+                                            Grid.Column="1"
+                                            FontAttributes="Bold"
+                                            Text="{Binding Value, StringFormat='{0:F0}'}"
+                                            TextColor="White" />
+                                    </Grid>
+
+                                    <Slider
+                                        Maximum="{Binding Max}"
+                                        Minimum="{Binding Min}"
+                                        Value="{Binding Value, Mode=TwoWay}" />
+
+                                </VerticalStackLayout>
+
+                            </Frame>
+
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+
+                </VerticalStackLayout>
+
+                <!--  MUSIC BUTTON  -->
+
+                <Button
+                    BackgroundColor="{StaticResource Primary}"
+                    Command="{Binding SelectMusicCommand}"
+                    ContentLayout="Left,10"
+                    CornerRadius="20"
+                    HeightRequest="50"
+                    ImageSource="musicplayer.png"
+                    Text="{Binding SelectedMusicName}"
+                    TextColor="White" />
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!--  START BUTTON (FIXED BOTTOM)  -->
+        <Grid Grid.Row="1" Padding="15">
+
+            <Button
+                BackgroundColor="{StaticResource Accent}"
+                Command="{Binding StartWorkoutCommand}"
+                CornerRadius="30"
+                FontAttributes="Bold"
+                HeightRequest="60"
+                Text="START WORKOUT"
+                TextColor="White" />
+
+            <!--<Button
+                BackgroundColor="MediumPurple"
+                Command="{Binding OpenReminderPageCommand}"
+                CornerRadius="10"
+                HeightRequest="50"
+                Text="Open Reminder"
+                TextColor="White"
+                WidthRequest="50" />-->
+
+        </Grid>
+
+    </Grid>
+
+</ContentPage>
