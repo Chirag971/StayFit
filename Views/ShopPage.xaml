@@ -103,7 +103,7 @@
 
                                 <!--  Image  -->
                                 <Image
-                                    Aspect="AspectFit"
+                                    Aspect="AspectFill"
                                     HeightRequest="110"
                                     Source="{Binding ImageSource}" />
 
@@ -163,7 +163,7 @@
                 Text="Fitness Gear"
                 TextColor="{StaticResource TextPrimary}" />
 
-            <CollectionView ItemsSource="{Binding GearItems}">
+            <CollectionView ItemsSource="{Binding FilteredItems}">
 
                 <!--  🔥 MAIN FIX (2 COLUMN)  -->
                 <CollectionView.ItemsLayout>

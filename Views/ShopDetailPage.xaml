@@ -5,87 +5,128 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="ProductDetailPage">
     <ScrollView>
-        <VerticalStackLayout Padding="15" Spacing="15">
 
-            <!--  Product Image  -->
-            <Image
-                Aspect="AspectFit"
-                HeightRequest="220"
-                Source="{Binding ImageSource}" />
+        <Grid RowDefinitions="Auto,*">
 
-            <!--  Brand  -->
-
-            <!--  Title  -->
-            <Label
-                FontAttributes="Bold"
-                FontSize="20"
-                Text="{Binding Title}" />
-
-
-            <!--  Brand  -->
-            <Label
-                FontSize="14"
-                Text="{Binding BrandName}"
-                TextColor="Gray" />
-
-            <!--  Full Description  -->
-            <Label
-                FontAttributes="Bold"
-                FontSize="16"
-                Text="Product Details" />
-
-            <Label
-                FontSize="14"
-                Text="{Binding FullDescription}"
-                TextColor="Gray" />
-            <!--  Price  -->
-            <Label
-                FontAttributes="Bold"
-                FontSize="25"
-                Text="{Binding PriceText}"
-                TextColor="Green" />
-
-            <!--  Quantity Section  -->
-            <HorizontalStackLayout Spacing="15" VerticalOptions="End">
-
-                <Button
-                    Command="{Binding DecreaseCommand}"
-                    FontSize="20"
-                    Text="-"
-                    WidthRequest="40" />
-
-                <Label
-                    FontSize="18"
-                    Text="{Binding Quantity}"
-                    VerticalOptions="Center" />
-
-                <Button
-                    Command="{Binding IncreaseCommand}"
-                    FontSize="20"
-                    Text="+"
-                    WidthRequest="40" />
-
-            </HorizontalStackLayout>
-
-            <!--  Add to Cart  -->
-            <!--
-            <Button
-                BackgroundColor="{StaticResource Primary}"
-                Command="{Binding AddToCartCommand}"
+            <!--  🔷 Product Image Section  -->
+            <Frame
+                Margin="10"
+                Padding="40"
+                BackgroundColor="#2A2A2A"
                 CornerRadius="20"
-                HeightRequest="50"
-                Text="Add To Cart"
-                TextColor="White" />-->
+                HasShadow="True">
 
-            <!--  Buy  -->
-            <Button
-                BackgroundColor="{StaticResource Primary}"
-                Command="{Binding AddToCartCommand}"
-                CornerRadius="20"
-                FontSize="20"
-                HeightRequest="40"
-                Text="Buy"
-                TextColor="White" />
-        </VerticalStackLayout>
+                <Image
+                    Aspect="AspectFit"
+                    HeightRequest="220"
+                    HorizontalOptions="Center"
+                    Source="{Binding ImageSource}" />
+            </Frame>
+
+            <!--  🔷 Details Section  -->
+            <ScrollView Grid.Row="1">
+                <VerticalStackLayout Padding="15" Spacing="12">
+
+                    <!--  Title  -->
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="22"
+                        Text="{Binding Title}"
+                        TextColor="White" />
+
+                    <!--  Brand  -->
+                    <Label
+                        FontSize="14"
+                        Text="{Binding BrandName}"
+                        TextColor="#AAAAAA" />
+
+                    <!--  Divider  -->
+                    <BoxView HeightRequest="1" Color="#333" />
+
+                    <!--  Product Details  -->
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="16"
+                        Text="Product Details"
+                        TextColor="White" />
+
+                    <Label
+                        FontSize="14"
+                        LineBreakMode="WordWrap"
+                        Text="{Binding FullDescription}"
+                        TextColor="#CCCCCC" />
+
+                    <!--  Price  -->
+                    <Label
+                        Margin="0,10,0,0"
+                        FontAttributes="Bold"
+                        FontSize="26"
+                        Text="{Binding PriceText}"
+                        TextColor="#00C853" />
+
+                    <!--  🔷 Quantity Section  -->
+                    <Frame
+                        Padding="10"
+                        BackgroundColor="#2A2A2A"
+                        CornerRadius="15"
+                        HorizontalOptions="Center"
+                        WidthRequest="180">
+
+                        <Grid ColumnDefinitions="*,Auto,*" VerticalOptions="Center">
+
+                            <!--  Minus  -->
+                            <Button
+                                Grid.Column="0"
+                                BackgroundColor="#444"
+                                Command="{Binding DecreaseCommand}"
+                                CornerRadius="20"
+                                FontSize="30"
+                                HeightRequest="40"
+                                HorizontalOptions="Center"
+                                Text="-"
+                                TextColor="White"
+                                VerticalOptions="Center"
+                                WidthRequest="40" />
+
+                            <!--  Quantity  -->
+                            <Label
+                                Grid.Column="1"
+                                FontSize="18"
+                                HorizontalOptions="Center"
+                                Text="{Binding Quantity}"
+                                TextColor="White"
+                                VerticalOptions="Center" />
+
+                            <!--  Plus  -->
+                            <Button
+                                Grid.Column="2"
+                                BackgroundColor="#444"
+                                Command="{Binding IncreaseCommand}"
+                                CornerRadius="20"
+                                FontSize="30"
+                                HeightRequest="40"
+                                HorizontalOptions="Center"
+                                Text="+"
+                                TextColor="White"
+                                VerticalOptions="Center"
+                                WidthRequest="40" />
+
+                        </Grid>
+                    </Frame>
+
+                    <!--  🔷 Buy Button  -->
+                    <Button
+                        Margin="0,20,0,20"
+                        BackgroundColor="#FF6F00"
+                        Command="{Binding AddToCartCommand}"
+                        CornerRadius="25"
+                        FontSize="18"
+                        HeightRequest="55"
+                        Text="Buy Now"
+                        TextColor="White" />
+
+                </VerticalStackLayout>
+            </ScrollView>
+        </Grid>
     </ScrollView>
 </ContentPage>

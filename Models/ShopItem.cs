@@ -22,6 +22,7 @@ namespace StayFitz.Models
         public string ShortDescription { get; set; }
         public string FullDescription { get; set; }
 
+        public decimal Price { get; set; }
         public bool AddedToCart
         {
             get => _addedToCart;

@@ -12,17 +12,26 @@ using StayFitz.Views;
 
 namespace StayFitz.ViewModel
 {
-    public class ShopViewModel
+    public class ShopViewModel 
     {
         private readonly ShopDataService _service;
 
         public ObservableCollection<ShopCategory> Categories { get; set; }
-        public ObservableCollection<ShopItem> FeaturedItems { get; set; }
-        public ObservableCollection<ShopItem> GearItems { get; set; }
+        //public ObservableCollection<ShopItem> FeaturedItems { get; set; }
+        //public ObservableCollection<ShopItem> GearItems { get; set; }
         public ObservableCollection<ShopItem> AllItems { get; set; }   // all products
         public ObservableCollection<ShopItem> FilteredItems { get; set; } // filtered UI
+        private string selectedCategory;
+        public string SelectedCategory
+        {
+            get => selectedCategory;
+            set
+            {
+                selectedCategory = value;
+              
+            }
+        }
 
-      
         public ShopViewModel()
         {
             AllItems = new ObservableCollection<ShopItem>();
@@ -32,8 +41,8 @@ namespace StayFitz.ViewModel
             _service = new ShopDataService();
 
             Categories = new ObservableCollection<ShopCategory>();
-            FeaturedItems = new ObservableCollection<ShopItem>();
-            GearItems = new ObservableCollection<ShopItem>();
+            //FeaturedItems = new ObservableCollection<ShopItem>();
+            //GearItems = new ObservableCollection<ShopItem>();
 
             LoadData();
         }
@@ -42,70 +51,64 @@ namespace StayFitz.ViewModel
             await Application.Current.MainPage.Navigation.PushAsync(
                 new ShopDetailPage(item));
         });
-
         private async void LoadData()
         {
             var data = await _service.GetShopDataAsync();
 
-            // Categories
+            Categories.Clear();
+
             foreach (var cat in data.Categories)
                 Categories.Add(cat);
 
-            // Products filter
-            var supplements = data.Products.Where(p => p.Section == "Supplement");
-            var gear = data.Products.Where(p => p.Section == "Gear");
-
-            foreach (var item in supplements)
-                FeaturedItems.Add(item);
+            AllItems.Clear();
+            FilteredItems.Clear();
 
             foreach (var item in data.Products)
             {
                 AllItems.Add(item);
-                FilteredItems.Add(item); // default = show all
+                FilteredItems.Add(item); // default show all
             }
-
-            foreach (var item in gear)
-                GearItems.Add(item);
         }
-        //    public ObservableCollection<ProductGroup> AllProducts { get; set; }
 
-        //    private async void LoadData()
-        //    {
-        //        var data = await _service.GetShopDataAsync();
+        //public ObservableCollection<ProductGroup> AllProducts { get; set; }
 
-        //        var supplements = data.Products.Where(p => p.Section == "Supplement");
-        //        var gear = data.Products.Where(p => p.Section == "Gear");
+        //private async void LoadData()
+        //{
+        //    var data = await _service.GetShopDataAsync();
 
-        //        AllProducts = new ObservableCollection<ProductGroup>
+        //    var supplements = data.Products.Where(p => p.Section == "Supplement");
+        //    var gear = data.Products.Where(p => p.Section == "Gear");
+
+        //    AllProducts = new ObservableCollection<ProductGroup>
         //{
         //    new ProductGroup("Top Supplements", supplements),
         //    new ProductGroup("Fitness Gear", gear)
         //};
-        //    }
-
-
-
-
-
-        //private void FilterProducts(string category)
-        //{
-        //    SelectedCategory = category;
-
-        //    FilteredItems.Clear();
-
-        //    if (category == "All")
-        //    {
-        //        foreach (var item in AllItems)
-        //            FilteredItems.Add(item);
-        //    }
-        //    else
-        //    {
-        //        var filtered = AllItems.Where(x => x.Section == category);
-
-        //        foreach (var item in filtered)
-        //            FilteredItems.Add(item);
-        //    }
         //}
+
+        private void FilterProducts(string category)
+        {
+            FilteredItems.Clear();
+
+            // FIX CATEGORY MAPPING
+            string section = category;
+
+            if (category == "Supplements")
+                section = "Supplement";
+
+            else if (category == "Fitness Gear")
+                section = "Gear";
+
+            foreach (var item in AllItems)
+            {
+                if (item.Section == section)
+                {
+                    FilteredItems.Add(item);
+                }
+            }
+        }
+
+
     }
 
 }

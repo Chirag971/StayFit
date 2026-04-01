@@ -13,98 +13,68 @@
         {
             "title": "Whey Protein",
             "brandName": "Optimum Nutrition",
+            "price": 2499,
             "priceText": "₹2,499",
             "imageSource": "whey.jpg",
             "rating": 4.5,
             "section": "Supplement",
             "shortDescription": "Protein for muscle growth",
-            "fullDescription": "Whey Protein is ideal for muscle recovery and strength building. \n\nBenefits:\n- Improves muscle growth\n- Speeds up recovery\n- Boosts stamina\n\nUse Case:\n- Post workout shake\n- Daily protein intake\n\nRecommended for gym users and athletes."
-
+            "fullDescription": "Whey Protein is ideal for muscle recovery and strength building."
         },
         {
             "title": "Multivitamins",
             "brandName": "NutraLife",
+            "price": 899,
             "priceText": "₹899",
             "imageSource": "multivitamin.jpg",
             "rating": 4.2,
             "section": "Supplement",
-            "shortDescription": "Protein for muscle growth",
-            "fullDescription": "Whey Protein is ideal for muscle recovery and strength building. \n\nBenefits:\n- Improves muscle growth\n- Speeds up recovery\n- Boosts stamina\n\nUse Case:\n- Post workout shake\n- Daily protein intake\n\nRecommended for gym users and athletes."
-
-
+            "shortDescription": "Daily vitamins",
+            "fullDescription": "Helps improve immunity and overall health."
         },
         {
             "title": "Fish Oil",
             "brandName": "Omega 3",
+            "price": 1199,
             "priceText": "₹1,199",
             "imageSource": "omega3.png",
             "rating": 4.3,
             "section": "Supplement",
-            "shortDescription": "Protein for muscle growth",
-            "fullDescription": "Whey Protein is ideal for muscle recovery and strength building. \n\nBenefits:\n- Improves muscle growth\n- Speeds up recovery\n- Boosts stamina\n\nUse Case:\n- Post workout shake\n- Daily protein intake\n\nRecommended for gym users and athletes."
-
-
+            "shortDescription": "Heart health support",
+            "fullDescription": "Rich in Omega 3 fatty acids."
         },
-
-        {
-            "title": "Fish Oil",
-            "brandName": "Omega 3",
-            "priceText": "₹1,199",
-            "imageSource": "omega3.png",
-            "rating": 4.3,
-            "section": "Supplement",
-            "shortDescription": "Protein for muscle growth",
-            "fullDescription": "Whey Protein is ideal for muscle recovery and strength building. \n\nBenefits:\n- Improves muscle growth\n- Speeds up recovery\n- Boosts stamina\n\nUse Case:\n- Post workout shake\n- Daily protein intake\n\nRecommended for gym users and athletes."
-
-        },
-
         {
             "title": "Yoga Mat",
             "brandName": "YogaPro",
+            "price": 799,
             "priceText": "₹799",
             "imageSource": "yogamats.png",
             "rating": 4.1,
             "section": "Gear",
-            "shortDescription": "Protein for muscle growth",
-            "fullDescription": "Whey Protein is ideal for muscle recovery and strength building. \n\nBenefits:\n- Improves muscle growth\n- Speeds up recovery\n- Boosts stamina\n\nUse Case:\n- Post workout shake\n- Daily protein intake\n\nRecommended for gym users and athletes."
-
+            "shortDescription": "Comfortable yoga mat",
+            "fullDescription": "Perfect for yoga and workouts."
         },
         {
             "title": "Fitness Watch",
             "brandName": "FitWatch",
+            "price": 2299,
             "priceText": "₹2,299",
             "imageSource": "watch.jpg",
             "rating": 4.4,
             "section": "Gear",
-            "shortDescription": "Protein for muscle growth",
-            "fullDescription": "Whey Protein is ideal for muscle recovery and strength building. \n\nBenefits:\n- Improves muscle growth\n- Speeds up recovery\n- Boosts stamina\n\nUse Case:\n- Post workout shake\n- Daily protein intake\n\nRecommended for gym users and athletes."
-
-
+            "shortDescription": "Track fitness activity",
+            "fullDescription": "Smart watch with fitness tracking."
         },
         {
             "title": "Skipping Rope",
             "brandName": "SpeedFit",
+            "price": 299,
             "priceText": "₹299",
             "imageSource": "rope.jpg",
             "rating": 4.0,
             "section": "Gear",
-            "shortDescription": "Protein for muscle growth",
-            "fullDescription": "Whey Protein is ideal for muscle recovery and strength building. \n\nBenefits:\n- Improves muscle growth\n- Speeds up recovery\n- Boosts stamina\n\nUse Case:\n- Post workout shake\n- Daily protein intake\n\nRecommended for gym users and athletes."
-
-
-        },
-        {
-            "title": "Yoga Mat",
-            "brandName": "YogaPro",
-            "priceText": "₹799",
-            "imageSource": "yogamats.png",
-            "rating": 4.1,
-            "section": "Gear",
-            "shortDescription": "Protein for muscle growth",
-            "fullDescription": "Whey Protein is ideal for muscle recovery and strength building. \n\nBenefits:\n- Improves muscle growth\n- Speeds up recovery\n- Boosts stamina\n\nUse Case:\n- Post workout shake\n- Daily protein intake\n\nRecommended for gym users and athletes."
-
-
+            "shortDescription": "Cardio exercise tool",
+            "fullDescription": "Best for cardio workouts."
         }
-
     ]
 }

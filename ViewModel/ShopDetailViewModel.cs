@@ -1,21 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using System.Windows.Input;
 using StayFitz.Models;
 
 namespace StayFitz.ViewModel
 {
-    public class ShoptDetailViewModel
+    public class ShoptDetailViewModel : INotifyPropertyChanged   // ✅ FIX
     {
         public ShopItem Product { get; set; }
 
         public string Title => Product.Title;
         public string BrandName => Product.BrandName;
-        public string PriceText => Product.PriceText;
+        public string PriceText => $"₹{Product.Price * Quantity}";
         public string ImageSource => Product.ImageSource;
         public string FullDescription => Product.FullDescription;
         public string ShortDescription => Product.ShortDescription;
@@ -26,8 +21,13 @@ namespace StayFitz.ViewModel
             get => _quantity;
             set
             {
-                _quantity = value;
-                OnPropertyChanged(nameof(Quantity));
+                if (_quantity != value)
+                {
+                    _quantity = value;
+
+                    OnPropertyChanged(nameof(Quantity));
+                    OnPropertyChanged(nameof(PriceText));  // 🔥 IMPORTANT
+                }
             }
         }
 
@@ -39,7 +39,11 @@ namespace StayFitz.ViewModel
         {
             Product = item;
 
-            IncreaseCommand = new Command(() => Quantity++);
+            IncreaseCommand = new Command(() =>
+            {
+                Quantity++;
+            });
+
             DecreaseCommand = new Command(() =>
             {
                 if (Quantity > 1)
@@ -55,8 +59,12 @@ namespace StayFitz.ViewModel
             });
         }
 
+        // ✅ Proper implementation
         public event PropertyChangedEventHandler PropertyChanged;
-        void OnPropertyChanged(string name) =>
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }
