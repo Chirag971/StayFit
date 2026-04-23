@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace StayFitz.Models
+﻿namespace StayFitz.Models
 {
     public class UserModel
     {
@@ -12,6 +6,9 @@ namespace StayFitz.Models
         public string Password { get; set; }
         public string Role { get; set; }
 
+        public string UserName { get; set; }
+        public string Email { get; set; }
+        public string ProfileImage { get; set; }
 
 
     }

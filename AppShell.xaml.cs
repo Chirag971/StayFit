@@ -118,22 +118,7 @@ namespace StayFitz
                 ThemeIcon = "sun.png";    //add this image in Resources/Images
             }
         }
-        //private void SetThemeUI()
-        //{
-        //    var theme = Application.Current.UserAppTheme;
-
-        //    if (theme == AppTheme.Unspecified)
-        //        theme = Application.Current.RequestedTheme;
-
-        //    if (theme == AppTheme.Dark)
-        //    {
-        //        ThemeText = "Dark Theme 🌙";
-        //        ThemeIcon = "moon.png"; // add this image
-        //    }
-        //    else
-        //    {
-        //        ThemeText = "Light Theme ☀️";
-        //        ThemeIcon = "sun.png"; // add this image
+       
     }
         }
    

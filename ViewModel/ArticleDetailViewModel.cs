@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using StayFitz.Models;
 
 namespace StayFitz.ViewModels
@@ -16,6 +17,20 @@ namespace StayFitz.ViewModels
                 OnPropertyChanged();
             }
         }
+        [RelayCommand]
+        public async Task ShareAsync()
+        {
+            if (Article == null) return;
+
+            var text = $"{Article.Title}\n\n{Article.Description}";
+
+            await Share.Default.RequestAsync(new ShareTextRequest
+            {
+                Text = text,
+                Title = "Share Article"
+            });
+        }
     }
 }
+
 

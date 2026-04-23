@@ -3,140 +3,140 @@
     x:Class="StayFitz.Views.DietPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:vm="clr-namespace:StayFitz.ViewModels"
+    x:Name="RootPage"
     BackgroundColor="{StaticResource Secondary}">
+
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="20">
+        <VerticalStackLayout Padding="20" Spacing="10">
 
-            <!--  Greeting  -->
+            <!--  🔷 Header  -->
+            <VerticalStackLayout Spacing="5">
+                <Label
+                    FontSize="18"
+                    HorizontalOptions="Start"
+                    Text=" StayFitz Hello 👋"
+                    TextColor="{StaticResource TextPrimary}" />
+            </VerticalStackLayout>
+
+
+            <!--  🔷 Buttons  -->
+            <Grid ColumnDefinitions="*,*,*" ColumnSpacing="15" />
+
+
             <Frame
                 Padding="15"
-                BackgroundColor="LightGreen"
-                CornerRadius="20">
-                <VerticalStackLayout>
-                    <Label
-                        FontAttributes="Bold"
-                        FontSize="22"
-                        Text="Diet" />
-                    <Label FontSize="16" Text="{Binding Greeting}" />
-                </VerticalStackLayout>
-            </Frame>
-
-            <!--  Calories Section  -->
-            <Frame
-                Padding="15"
-                BackgroundColor="{StaticResource CardBg}"
-                CornerRadius="20">
+                BackgroundColor="#1E1E1E"
+                CornerRadius="15">
 
                 <VerticalStackLayout Spacing="10">
-                    <Label FontSize="16" Text="Daily Calories" />
+                    <Picker
+                        Title="Select Meal Type"
+                        ItemsSource="{Binding MealTypes}"
+                        SelectedItem="{Binding SelectedMealType}" />
 
-                    <Label
-                        FontAttributes="Bold"
-                        FontSize="28"
-                        Text="{Binding DailyCalories}"
-                        TextColor="White" />
+                    <!--  Food Picker (FILTERED)  -->
+                    <!--<Picker
+                        Title="Select Food"
+                        ItemDisplayBinding="{Binding Name}"
+                        ItemsSource="{Binding FilteredFoods}"
+                        SelectedItem="{Binding SelectedFood}" />-->
 
-                    <ProgressBar
-                        BackgroundColor="#E0E0E0"
-                        HeightRequest="10"
-                        Progress="{Binding Progress}"
-                        ProgressColor="Green" />
+                    <Picker
+                        Title="Select Food"
+                        ItemDisplayBinding="{Binding Name}"
+                        ItemsSource="{Binding FilteredFoods}"
+                        SelectedItem="{Binding SelectedFood, Mode=TwoWay}" />
+
+                    <Button
+                        Grid.Column="0"
+                        Margin="0,25,0,0"
+                        BackgroundColor="{StaticResource Primary}"
+                        Command="{Binding AddMealCommand}"
+                        CornerRadius="10"
+                        Text="Add Meal"
+                        TextColor="White"
+                        WidthRequest="100" />
                 </VerticalStackLayout>
             </Frame>
 
-            <!--  Buttons  -->
-            <HorizontalStackLayout Spacing="15">
-
-                <Button
-                    BackgroundColor="#A8E6CF"
-                    Command="{Binding AddMealCommand}"
-                    CornerRadius="15"
-                    Text="Add Meal" />
-
-                <Button
-                    BackgroundColor="#DCEFFF"
-                    CornerRadius="15"
-                    Text="Foods" />
-
-                <Button
-                    BackgroundColor="#F8D7FF"
-                    CornerRadius="15"
-                    Text="Recipes" />
-            </HorizontalStackLayout>
-
-            <!--  Healthy Diet Tips  -->
             <Label
                 FontAttributes="Bold"
                 FontSize="18"
-                Text="Healthy Diet Tips" />
+                Text="Today's Meals"
+                TextColor="White" />
 
-            <CollectionView ItemsLayout="HorizontalList" ItemsSource="{Binding DietTips}">
+            <CollectionView
+                ItemsSource="{Binding TodayMeals}"
+                SelectionChanged="OnMealSelected"
+                SelectionMode="Single">
 
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame
-                            Margin="20"
-                            Padding="0"
-                            CornerRadius="15"
-                            WidthRequest="180">
-
-                            <VerticalStackLayout>
-                                <Image
-                                    Aspect="AspectFill"
-                                    BackgroundColor="White"
-                                    HeightRequest="90"
-                                    Source="{Binding Image}" />
-
-                                <Label
-                                    Padding="10"
-                                    BackgroundColor="Transparent"
-                                    FontAttributes="Bold"
-                                    Text="{Binding Title}" />
-
-                            </VerticalStackLayout>
-                        </Frame>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-
-            <!--  Today's Meals  -->
-            <Label
-                FontAttributes="Bold"
-                FontSize="18"
-                Text="Today's Meals" />
-
-            <CollectionView ItemsSource="{Binding TodayMeals}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Frame
-                            Margin="5"
+                            Margin="10"
                             Padding="10"
+                            BackgroundColor="{StaticResource DarkBackground}"
                             CornerRadius="15">
 
-                            <Grid ColumnDefinitions="80,*,Auto">
+                            <Grid ColumnDefinitions="70,*,Auto,Auto" ColumnSpacing="10">
+
 
                                 <Image
-                                    HeightRequest="60"
+                                    HeightRequest="50"
                                     Source="{Binding Image}"
                                     WidthRequest="60" />
 
                                 <VerticalStackLayout Grid.Column="1">
-                                    <Label FontAttributes="Bold" Text="{Binding MealType}" />
-                                    <Label Text="{Binding Time}" />
+                                    <Label
+                                        FontSize="18"
+                                        Text="{Binding MealType}"
+                                        TextColor="White" />
+
+                                    <Label
+                                        FontSize="12"
+                                        Text="{Binding Time}"
+                                        TextColor="Gray" />
                                 </VerticalStackLayout>
 
-                                <Label
-                                    Grid.Column="2"
-                                    Text="{Binding Calories}"
-                                    VerticalOptions="Center" />
-                            </Grid>
 
+                                <VerticalStackLayout
+                                    Grid.Column="2"
+                                    Margin="10"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Center">
+
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="18"
+                                        Text="{Binding Calories}"
+                                        TextColor="#4CAF50" />
+
+                                    <Label
+                                        FontSize="12"
+                                        Text="Calories"
+                                        TextColor="{StaticResource TextPrimary}" />
+                                </VerticalStackLayout>
+
+                                <ImageButton
+                                    Grid.Column="3"
+                                    BackgroundColor="Transparent"
+                                    Command="{Binding Source={x:Reference RootPage}, Path=BindingContext.DeleteMealCommand}"
+                                    CommandParameter="{Binding .}"
+                                    HeightRequest="25"
+                                    Source="delete.png"
+                                    WidthRequest="25" />
+
+                                <!--<Label
+                                    FontAttributes="Bold"
+                                    FontSize="25"
+                                    Text="{Binding DailyCalories, StringFormat='Total Calories: {0} kcal'}"
+                                    TextColor="{StaticResource Primary}" />-->
+                            </Grid>
                         </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
-            </CollectionView>
 
+            </CollectionView>
         </VerticalStackLayout>
     </ScrollView>
 

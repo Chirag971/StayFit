@@ -1,0 +1,40 @@
+﻿{
+    "articles": [
+        {
+            "title": "Benefits of Daily Walking",
+            "description": "Walking daily is one of the simplest and most effective ways to stay healthy.\n\n• Improves heart health and blood circulation\n• Helps in weight management\n• Boosts mood and reduces stress\n• Strengthens muscles and joints\n\nStart with just 30 minutes a day and gradually increase your pace for better results.",
+            "image": "walking.jpg",
+            "category": "Fitness"
+        },
+        {
+            "title": "Healthy Diet Tips",
+            "description": "A balanced diet is essential for maintaining overall health and energy levels.\n\n• Include fresh fruits and vegetables daily\n• Add protein sources like eggs, pulses, and dairy\n• Drink plenty of water (8–10 glasses)\n• Avoid processed and junk food\n\nSmall changes in your daily diet can lead to big improvements in your health.",
+            "image": "dietimg.jpg",
+            "category": "Nutrition"
+        },
+        {
+            "title": "Meditation Guide",
+            "description": "Meditation helps improve mental clarity and emotional stability.\n\n• Practice deep breathing techniques\n• Start with 5–10 minutes daily\n• Focus on your thoughts without judgment\n• Helps reduce anxiety and stress\n\nRegular meditation can improve concentration and bring peace to your daily life.",
+            "image": "meditation.jpg",
+            "category": "Mental"
+        },
+        {
+            "title": "Drinking Water Benefits",
+            "description": "Staying hydrated is essential for maintaining overall health and energy levels.\n\n• Improves digestion and prevents constipation\n• Keeps your skin healthy and glowing\n• Helps regulate body temperature\n• Flushes out toxins from the body\n\nDrinking at least 8–10 glasses of water daily can significantly improve your health and well-being.",
+            "image": "water1.jpg",
+            "category": "Nutrition"
+        },
+        {
+            "title": "Stress Management Tips",
+            "description": "Managing stress is important for both mental and physical health.\n\n• Practice deep breathing and relaxation techniques\n• Maintain a healthy work-life balance\n• Engage in physical activities like yoga or walking\n• Get enough sleep and rest\n\nTaking small steps daily can help reduce stress and improve your overall quality of life.",
+            "image": "stress.jpg",
+            "category": "Mental"
+        },
+        {
+            "title": "Importance of Sleep",
+            "description": "Getting 7–8 hours of quality sleep is essential for overall health.\n\n• Improves memory and concentration\n• Boosts immune system\n• Reduces stress and anxiety\n• Helps body recovery and growth\n\nMaintain a proper sleep schedule and avoid screen time before bed for better sleep quality.",
+            "image": "sleep1.jpg",
+            "category": "Mental"
+        }
+    ]
+}

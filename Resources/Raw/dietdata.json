@@ -1,0 +1,131 @@
+﻿{
+    "foods": [
+        {
+            "name": "Apple",
+            "calories": 95,
+            "image": "apple.png",
+            "mealType": "Breakfast",
+            "description": "A healthy fruit rich in fiber.",
+            "benefits": [
+                "Improves digestion",
+                "Good for heart",
+                "Boosts immunity"
+            ]
+        },
+        {
+            "name": "banana",
+            "calories": 150,
+            "image": "banana.png",
+            "mealType": "Breakfast",
+            "description": "A naturally sweet fruit rich in potassium and quick energy.",
+            "benefits": [
+                "Boosts instant energy",
+                "Supports heart health",
+                "Improves digestion",
+                "Rich in potassium for muscle function"
+            ]
+        },
+        {
+            "name": "peanut butter toast",
+            "calories": 150,
+            "image": "peanutbuttertoast.jpg",
+            "mealType": "Breakfast",
+            "description": "A protein-packed snack combining whole grain toast with creamy peanut butter.",
+            "benefits": [
+                "High in protein for muscle building",
+                "Keeps you full for longer",
+                "Provides healthy fats",
+                "Great for breakfast or post-workout snack"
+            ]
+        },
+
+        
+        {
+            "name": "Paneer",
+            "calories": 265,
+            "image": "paneer.png",
+            "mealType": "Lunch",
+            "description": "High-protein vegetarian food.",
+            "benefits": [
+                "Excellent protein source",
+                "Good for muscle gain",
+                "Rich in calcium"
+            ]
+        },
+        {
+            "name": "Brown Rice",
+            "calories": 220,
+            "image": "brownrice.jpg",
+            "mealType": "Lunch",
+            "description": "Whole grain rice rich in fiber.",
+            "benefits": [
+                "Slow energy release",
+                "Improves digestion",
+                "Good for weight management"
+            ]
+        },
+
+        {
+            "name": "Rice",
+            "calories": 200,
+            "image": "rice.png",
+            "mealType": "Lunch",
+            "description": "Staple food, high in carbs.",
+            "benefits": [
+                "Gives energy",
+                "Easy to digest",
+                "Good for weight gain"
+            ]
+        },
+
+       
+        {
+            "name": "Dal",
+            "calories": 180,
+            "image": "dal.png",
+            "mealType": "Dinner",
+            "description": "Protein rich lentils.",
+            "benefits": [
+                "High protein",
+                "Good for muscle",
+                "Light meal"
+            ]
+        },
+        {
+            "name": "Chapati",
+            "calories": 120,
+            "image": "chapati.png",
+            "mealType": "Dinner",
+            "description": "Light Indian bread.",
+            "benefits": [
+                "Easy to digest",
+                "Low calories",
+                "Good for night meal"
+            ]
+        },
+        {
+            "name": "Vegetable Salad",
+            "calories": 100,
+            "image": "salad.jpg",
+            "mealType": "Dinner",
+            "description": "Fresh raw vegetables.",
+            "benefits": [
+                "Rich in fiber",
+                "Helps in weight loss",
+                "Improves digestion"
+            ]
+        },
+        {
+            "name": "Vegetable Soup",
+            "calories": 120,
+            "image": "soup.jpg",
+            "mealType": "Dinner",
+            "description": "Light and nutritious meal.",
+            "benefits": [
+                "Low calories",
+                "Hydrating",
+                "Easy to digest"
+            ]
+        }
+    ]
+}

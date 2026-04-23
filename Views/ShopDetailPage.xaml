@@ -4,6 +4,22 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="ProductDetailPage">
+
+    <Shell.TitleView>
+        <Grid>
+            <Image
+                Margin="0,0,20,0"
+                HeightRequest="40"
+                HorizontalOptions="End"
+                Source="cart1.png"
+                WidthRequest="40">
+                <!--  👈 Right spacing  -->
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnCartClicked" />
+                </Image.GestureRecognizers>
+            </Image>
+        </Grid>
+    </Shell.TitleView>
     <ScrollView>
 
         <Grid RowDefinitions="Auto,*">
@@ -22,8 +38,24 @@
                     HorizontalOptions="Center"
                     Source="{Binding ImageSource}" />
             </Frame>
-
-            <!--  🔷 Details Section  -->
+            <!--<Grid>
+            -->
+            <!--  Product Image  -->
+            <!--
+                <Image HeightRequest="220" Source="{Binding ImageSource}" />
+            -->
+            <!--  ❤️ Wishlist Button  -->
+            <!--
+                <Button
+                    BackgroundColor="Transparent"
+                    Command="{Binding ToggleWishlistCommand}"
+                    FontSize="20"
+                    HorizontalOptions="End"
+                    Text="❤"
+                    TextColor="Red"
+                    VerticalOptions="Start" />
+            </Grid>-->
+            <!--  Details Section  -->
             <ScrollView Grid.Row="1">
                 <VerticalStackLayout Padding="15" Spacing="12">
 
@@ -39,6 +71,11 @@
                         FontSize="14"
                         Text="{Binding BrandName}"
                         TextColor="#AAAAAA" />
+
+                    <!--<Label
+                        FontSize="14"
+                        Text="{Binding PriceText}"
+                        TextColor="#AAAAAA" />-->
 
                     <!--  Divider  -->
                     <BoxView HeightRequest="1" Color="#333" />
@@ -114,16 +151,27 @@
                         </Grid>
                     </Frame>
 
-                    <!--  🔷 Buy Button  -->
+                    <!--  Buy Button  -->
                     <Button
-                        Margin="0,20,0,20"
-                        BackgroundColor="#FF6F00"
-                        Command="{Binding AddToCartCommand}"
+                        Margin="20,10"
+                        BackgroundColor="{StaticResource Primary}"
+                        Command="{Binding BuyCommand}"
                         CornerRadius="25"
                         FontSize="18"
                         HeightRequest="55"
-                        Text="Buy Now"
-                        TextColor="White" />
+                        Text="Buy"
+                        TextColor="White"
+                        WidthRequest="180" />
+
+                    <!--<Button
+                        Margin="0,10,0,20"
+                        BackgroundColor="{StaticResource Primary}"
+                        Command="{Binding AddToCartCommand}"
+                        FontSize="18"
+                        HeightRequest="55"
+                        WidthRequest="140"
+                        Text="Add To Cart"
+                        TextColor="{StaticResource TextPrimary}" />-->
 
                 </VerticalStackLayout>
             </ScrollView>

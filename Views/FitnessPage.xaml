@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="StayFitz.Views.FitnessPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Fitness Dashboard">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="28"
+                HorizontalOptions="Center"
+                Text="🏋️ Fitness Dashboard"
+                TextColor="#333" />
+
+            <Frame
+                Padding="15"
+                BackgroundColor="#4CAF50"
+                CornerRadius="20"
+                HasShadow="True">
+                <VerticalStackLayout>
+                    <Label
+                        FontSize="18"
+                        Text="👣 Steps"
+                        TextColor="{StaticResource TextPrimary}" />
+
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="30"
+                        Text="{Binding Data.Steps}"
+                        TextColor="{StaticResource TextPrimary}" />
+                </VerticalStackLayout>
+            </Frame>
+
+
+            <Frame
+                Padding="15"
+                BackgroundColor="{StaticResource Primary}"
+                CornerRadius="20"
+                HasShadow="True">
+                <VerticalStackLayout>
+                    <Label
+                        FontSize="18"
+                        Text="🔥 Calories Burned"
+                        TextColor="White" />
+
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="30"
+                        Text="{Binding Data.Calories}"
+                        TextColor="White" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame
+                Padding="15"
+                BackgroundColor="#E91E63"
+                CornerRadius="20"
+                HasShadow="True">
+                <VerticalStackLayout>
+                    <Label
+                        FontSize="18"
+                        Text="❤️ Heart Rate"
+                        TextColor="White" />
+
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="30"
+                        Text="{Binding Data.HeartRate}"
+                        TextColor="White" />
+
+                    <Label
+                        FontSize="14"
+                        Text="BPM"
+                        TextColor="White" />
+                </VerticalStackLayout>
+            </Frame>
+
+
+            <Frame
+                Padding="15"
+                BackgroundColor="#3F51B5"
+                CornerRadius="20"
+                HasShadow="True">
+                <VerticalStackLayout>
+                    <Label
+                        FontSize="18"
+                        Text="😴 Sleep Hours"
+                        TextColor="White" />
+
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="30"
+                        Text="{Binding Data.SleepHours}"
+                        TextColor="White" />
+
+                    <Entry
+                        Margin="0,10,0,0"
+                        BackgroundColor="{StaticResource TextPrimary}"
+                        Keyboard="Numeric"
+                        Placeholder="Enter Sleep Hours"
+                        Text="{Binding Data.SleepHours}"
+                        TextColor="Black" />
+                </VerticalStackLayout>
+            </Frame>
+
+
+            <HorizontalStackLayout Spacing="15">
+
+                <Button
+                    BackgroundColor="#4CAF50"
+                    CornerRadius="15"
+                    HorizontalOptions="Center"
+                    Text="▶ Start"
+                    TextColor="White" />
+
+                <Button
+                    BackgroundColor="#F44336"
+                    CornerRadius="15"
+                    HorizontalOptions="Center"
+                    Text="⏹ Stop"
+                    TextColor="White" />
+
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using StayFitz.Models;
+using StayFitz.Models.StayFitz.Models;
 using StayFitz.Services;
 using StayFitz.Utilities;
 using StayFitz.Views;
@@ -15,7 +17,9 @@ namespace StayFitz.ViewModel
     public class ShopViewModel 
     {
         private readonly ShopDataService _service;
-
+        public ICommand OpenDetailCommand { get; }
+        public ICommand AddToCartAndOpenCommand { get; }
+        public ICommand FilterCommand { get; }
         public ObservableCollection<ShopCategory> Categories { get; set; }
         //public ObservableCollection<ShopItem> FeaturedItems { get; set; }
         //public ObservableCollection<ShopItem> GearItems { get; set; }
@@ -31,26 +35,93 @@ namespace StayFitz.ViewModel
               
             }
         }
+        public int CartCount => CartService.CartItems.Sum(x => x.Quantity);
+        public event PropertyChangedEventHandler PropertyChanged;
 
+        void OnPropertyChanged(string name)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
         public ShopViewModel()
         {
+            AddToCartAndOpenCommand = new Command<ShopItem>(async (item) =>
+            {
+                if (item == null) return;
+
+                // 🔥 Check if already exists  
+                var existing = CartService.CartItems
+                    .FirstOrDefault(x => x.Title == item.Title);
+
+                if (existing != null)
+                {
+                    existing.Quantity++;
+                }
+                else
+                {
+                    CartService.CartItems.Add(new ShopItem
+                    {
+                        Title = item.Title,
+                        BrandName = item.BrandName,
+                        Price = item.Price,
+                        ImageSource = item.ImageSource,
+                        Quantity = 1
+                    });
+                }
+
+                CartService.NotifyChange(); // 🔥 Update UI  
+
+                // 🔥 OPEN CART PAGE  
+                await Shell.Current.GoToAsync(nameof(CartPage));
+            });
+
+            OpenDetailCommand = new Command<ShopItem>(async (item) =>
+            {
+                if (item == null) return;
+
+                await Application.Current.MainPage.Navigation.PushAsync(
+                    new ShopDetailPage(item));
+            });
             AllItems = new ObservableCollection<ShopItem>();
             FilteredItems = new ObservableCollection<ShopItem>();
 
-            //FilterCommand = new Command<string>(FilterProducts);
+            // Correctly initialize FilterProducts as a Command  
+            FilterCommand = new Command<string>(FilterProductsMethod);
+
             _service = new ShopDataService();
 
             Categories = new ObservableCollection<ShopCategory>();
-            //FeaturedItems = new ObservableCollection<ShopItem>();
-            //GearItems = new ObservableCollection<ShopItem>();
 
             LoadData();
+        }
+
+        private void FilterProductsMethod(string category)
+        {
+            FilteredItems.Clear();
+
+            // FIX CATEGORY MAPPING  
+            string section = category;
+
+            if (category == "Supplements")
+                section = "Supplement";
+
+            else if (category == "Fitness Gear")
+                section = "Gear";
+
+            foreach (var item in AllItems)
+            {
+                if (item.Section == section)
+                {
+                    FilteredItems.Add(item);
+                }
+            }
         }
         public ICommand AddItemCommand => new Command<ShopItem>(static async (item) =>
         {
             await Application.Current.MainPage.Navigation.PushAsync(
                 new ShopDetailPage(item));
         });
+
+
         private async void LoadData()
         {
             var data = await _service.GetShopDataAsync();
@@ -86,27 +157,29 @@ namespace StayFitz.ViewModel
         //};
         //}
 
-        private void FilterProducts(string category)
-        {
-            FilteredItems.Clear();
+        //private void FilterProducts(string category)
+        //{
+        //    FilteredItems.Clear();
 
-            // FIX CATEGORY MAPPING
-            string section = category;
+        //    // FIX CATEGORY MAPPING
+        //    string section = category;
 
-            if (category == "Supplements")
-                section = "Supplement";
+        //    if (category == "Supplements")
+        //        section = "Supplement";
 
-            else if (category == "Fitness Gear")
-                section = "Gear";
+        //    else if (category == "Fitness Gear")
+        //        section = "Gear";
 
-            foreach (var item in AllItems)
-            {
-                if (item.Section == section)
-                {
-                    FilteredItems.Add(item);
-                }
-            }
-        }
+        //    foreach (var item in AllItems)
+        //    {
+        //        if (item.Section == section)
+        //        {
+        //            FilteredItems.Add(item);
+        //        }
+        //    }
+        //}
+
+        
 
 
     }

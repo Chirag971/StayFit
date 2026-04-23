@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="StayFitz.Views.RecipesPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="RecipesPage">
+    <CollectionView ItemsSource="{Binding Recipes}">
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <Frame
+                    Margin="10"
+                    Padding="10"
+                    CornerRadius="10">
+                    <VerticalStackLayout>
+                        <Image HeightRequest="120" Source="{Binding Image}" />
+                        <Label FontAttributes="Bold" Text="{Binding Title}" />
+                        <Label Text="{Binding Calories, StringFormat='Calories: {0}'}" />
+
+                        <Button Clicked="OnViewRecipeClicked" Text="View Recipe" />
+                    </VerticalStackLayout>
+                </Frame>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentPage>

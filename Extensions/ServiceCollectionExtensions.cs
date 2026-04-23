@@ -1,5 +1,6 @@
 ﻿using StayFitz.Models;
 using StayFitz.ViewModel;
+using StayFitz.ViewModel.StayFitz.ViewModel;
 using StayFitz.ViewModels;
 using StayFitz.Views;
 
@@ -28,6 +29,9 @@ namespace StayFitz.Extensions
             services.AddViewWithViewModel<HistoryPage, HistoryViewModel>();
             services.AddViewWithViewModel<ProgressPage, ProgressViewModel>();
             services.AddViewWithViewModel<ReminderPage, ReminderPageViewModel>();
+           // services.AddViewWithViewModel<WishlistPage, WishlistViewModel>();
+            services.AddViewWithViewModel<CartPage, CartViewModel>();
+            services.AddViewWithViewModel<DietPage, DietPageViewModel>();
            
           
         }

@@ -3,89 +3,107 @@
     x:Class="StayFitz.Views.ProfilePage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    BackgroundColor="{StaticResource Secondary}">
+    BackgroundColor="#0F0F0F">
 
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="25">
+
+
             <Frame
-                Padding="20"
-                BackgroundColor="{StaticResource CardBg}"
+                Padding="15"
+                BackgroundColor="#1C1C1E"
                 CornerRadius="25"
-                HasShadow="True">
+                HasShadow="False">
 
-                <HorizontalStackLayout Spacing="15">
+                <Grid ColumnDefinitions="Auto,*,Auto" VerticalOptions="Center">
 
-                    <!--  Circular Image  -->
+                    <!--  Profile Image  -->
                     <Frame
                         Padding="0"
-                        CornerRadius="40"
-                        HeightRequest="80"
+                        BackgroundColor="#2A2A2D"
+                        CornerRadius="35"
+                        HeightRequest="70"
                         IsClippedToBounds="True"
-                        WidthRequest="80">
+                        WidthRequest="70">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding UploadImageCommand}" />
+                        </Frame.GestureRecognizers>
 
-                        <Image Aspect="AspectFill" Source="{Binding ProfileImage}" />
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="55"
+                            Source="{Binding ProfileImage}"
+                            WidthRequest="50" />
                     </Frame>
-                    <!--  User Info  -->
-                    <VerticalStackLayout Spacing="4" VerticalOptions="Center">
 
-                        <Label
+
+                    <VerticalStackLayout
+                        Grid.Column="1"
+                        Margin="10,0"
+                        Spacing="3">
+
+                        <!--<Label
                             FontAttributes="Bold"
-                            FontSize="20"
+                            FontSize="18"
                             Text="{Binding UserName}"
-                            TextColor="Black" />
+                            TextColor="{StaticResource TextPrimary}" />
 
                         <Label
-                            FontSize="13"
+                            FontSize="12"
                             Text="{Binding Email}"
-                            TextColor="Gray" />
+                            TextColor="{StaticResource TextPrimary}" />-->
+
+                        <Label FontSize="18" Text="{Binding UserName}" />
+                        <Label FontSize="18" Text="{Binding Email}" />
+
                         <Frame
                             Padding="6,2"
-                            BackgroundColor="#66BB6A"
-                            CornerRadius="12"
+                            BackgroundColor="#34C759"
+                            CornerRadius="10"
                             HorizontalOptions="Start"
                             IsVisible="{Binding IsPremium}">
+
                             <Label
-                                FontSize="11"
+                                FontSize="10"
                                 Text="★ Premium Member"
-                                TextColor="White" />
+                                TextColor="{StaticResource TextPrimary}" />
                         </Frame>
                     </VerticalStackLayout>
                     <Button
-                        BackgroundColor="#E0E0E0"
+                        Grid.Column="2"
+                        BackgroundColor="#2C2C2E"
                         Command="{Binding EditProfileCommand}"
                         CornerRadius="15"
+                        FontSize="12"
                         HeightRequest="35"
-                        HorizontalOptions="EndAndExpand"
                         Text="Edit"
-                        VerticalOptions="Center" />
+                        TextColor="White" />
 
-                </HorizontalStackLayout>
-
+                </Grid>
             </Frame>
-            <CollectionView ItemsSource="{Binding Stats}" SelectionMode="None">
 
+            <CollectionView ItemsSource="{Binding Stats}" SelectionMode="None">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout
-                        HorizontalItemSpacing="10"
+                        HorizontalItemSpacing="15"
                         Orientation="Vertical"
                         Span="2"
-                        VerticalItemSpacing="10" />
+                        VerticalItemSpacing="15" />
                 </CollectionView.ItemsLayout>
 
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame
                             Padding="15"
-                            BackgroundColor="{StaticResource CardBg}"
-                            CornerRadius="20"
-                            HasShadow="False">
+                            BackgroundColor="#1C1C1E"
+                            CornerRadius="20">
 
-                            <VerticalStackLayout Spacing="6">
+                            <VerticalStackLayout Spacing="10">
 
                                 <Image
-                                    HeightRequest="80"
+                                    HeightRequest="50"
                                     Source="{Binding Icon}"
-                                    WidthRequest="80" />
+                                    WidthRequest="50" />
 
                                 <Label
                                     FontAttributes="Bold"
@@ -94,73 +112,62 @@
                                     TextColor="White" />
 
                                 <Label
-                                    FontSize="13"
+                                    FontSize="12"
                                     Text="{Binding Title}"
-                                    TextColor="Gray" />
+                                    TextColor="#AAAAAA" />
 
                             </VerticalStackLayout>
-
                         </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
-
             </CollectionView>
 
+            <!--  SETTINGS LIST  -->
             <CollectionView ItemsSource="{Binding Settings}" SelectionMode="None">
-
-                <!--  new code for spancing  -->
-
-                <CollectionView.ItemsLayout>
-                    <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="1" />
-                </CollectionView.ItemsLayout>
-
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame
-                            Margin="50"
-                            BackgroundColor="{StaticResource CardBg}"
-                            CornerRadius="15"
-                            HasShadow="False">
-
-                            <Grid ColumnDefinitions="Auto,*,Auto" VerticalOptions="Center">
+                            Margin="25"
+                            Padding="15"
+                            BackgroundColor="#1C1C1E"
+                            CornerRadius="15">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NavigateCommand}" CommandParameter="{Binding .}" />
+                            </Frame.GestureRecognizers>
+                            <Grid ColumnDefinitions="Auto,*,Auto">
 
                                 <Image
-                                    Grid.Column="0"
-                                    HeightRequest="25"
+                                    HeightRequest="22"
                                     Source="{Binding Icon}"
-                                    WidthRequest="25" />
+                                    WidthRequest="22" />
 
                                 <Label
                                     Grid.Column="1"
                                     Margin="10,0"
-                                    FontSize="15"
+                                    FontSize="14"
                                     Text="{Binding Title}"
-                                    TextColor="White"
-                                    VerticalOptions="Center" />
+                                    TextColor="White" />
 
-                                <!--  Arrow  -->
                                 <Label
                                     Grid.Column="2"
-                                    FontSize="16"
-                                    Text="&gt;"
-                                    TextColor="White"
-                                    VerticalTextAlignment="End" />
-
+                                    FontSize="18"
+                                    Text="›"
+                                    TextColor="#888" />
                             </Grid>
 
                         </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
-
             </CollectionView>
-            <Button
+
+            <!--  BUTTON  -->
+            <!--<Button
                 BackgroundColor="{StaticResource Primary}"
-                Command="{Binding ViewProgressCommand}"
                 CornerRadius="30"
                 FontAttributes="Bold"
                 HeightRequest="55"
                 Text="View Progress"
-                TextColor="White" />
+                TextColor="White" />-->
 
         </VerticalStackLayout>
     </ScrollView>

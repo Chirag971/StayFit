@@ -5,7 +5,7 @@
     BackgroundColor="{StaticResource Secondary}">
     <ScrollView>
         <Grid RowDefinitions="Auto,*">
-            <!--  🔷 TOP FORM  -->
+
 
             <VerticalStackLayout Padding="20" Spacing="18">
                 <Label
@@ -14,8 +14,8 @@
                     HorizontalOptions="Center"
                     Text="🔔 Reminder"
                     TextColor="White" />
-                <!--  TYPE  -->
-                <Frame BackgroundColor="#123B5A" CornerRadius="12">
+
+                <Frame BackgroundColor="{StaticResource DarkBackground}" CornerRadius="12">
                     <VerticalStackLayout>
                         <Label Text="Select Type" TextColor="White" />
                         <Picker
@@ -24,22 +24,22 @@
                             TextColor="White" />
                     </VerticalStackLayout>
                 </Frame>
-                <!--  DATE  -->
-                <Frame BackgroundColor="#123B5A" CornerRadius="12">
+
+                <Frame BackgroundColor="{StaticResource DarkBackground}" CornerRadius="12">
                     <VerticalStackLayout>
                         <Label Text="Select Date" TextColor="White" />
                         <DatePicker Date="{Binding SelectedDate}" TextColor="White" />
                     </VerticalStackLayout>
                 </Frame>
-                <!--  TIME  -->
-                <Frame BackgroundColor="#123B5A" CornerRadius="12">
+
+                <Frame BackgroundColor="{StaticResource DarkBackground}" CornerRadius="12">
                     <VerticalStackLayout>
                         <Label Text="Select Time" TextColor="White" />
                         <TimePicker TextColor="White" Time="{Binding SelectedTime}" />
                     </VerticalStackLayout>
                 </Frame>
-                <!--  MESSAGE  -->
-                <Frame BackgroundColor="#123B5A" CornerRadius="12">
+
+                <Frame BackgroundColor="{StaticResource DarkBackground}" CornerRadius="12">
                     <VerticalStackLayout>
                         <Label Text="Message" TextColor="White" />
                         <Entry
@@ -48,12 +48,12 @@
                             TextColor="White" />
                     </VerticalStackLayout>
                 </Frame>
-                <!--  MUSIC  -->
-                <Frame BackgroundColor="#123B5A" CornerRadius="12">
+
+                <Frame BackgroundColor="{StaticResource DarkBackground}" CornerRadius="12">
                     <VerticalStackLayout Spacing="10">
                         <Label Text="Select Music 🎵" TextColor="White" />
                         <Button
-                            BackgroundColor="Orange"
+                            BackgroundColor="{StaticResource Primary}"
                             Command="{Binding PickMusicCommand}"
                             Text="Choose Music"
                             TextColor="White" />
@@ -63,14 +63,14 @@
                             TextColor="LightGray" />
                     </VerticalStackLayout>
                 </Frame>
-                <!--  SAVE BUTTON  -->
                 <Button
-                    BackgroundColor="#FF7A18"
+                    BackgroundColor="{StaticResource Primary}"
                     Command="{Binding SaveReminderCommand}"
-                    CornerRadius="25"
+                    CornerRadius="20"
                     HeightRequest="50"
                     Text="Save Reminder"
-                    TextColor="White" />
+                    TextColor="White"
+                    WidthRequest="120" />
                 <Label
                     FontAttributes="Bold"
                     FontSize="20"
@@ -78,7 +78,6 @@
                     TextColor="White" />
             </VerticalStackLayout>
 
-            <!--  🔷 LIST (SEPARATE SCROLL)  -->
             <CollectionView
                 Grid.Row="1"
                 Margin="10"

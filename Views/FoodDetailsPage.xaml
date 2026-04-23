@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="StayFitz.Views.FoodDetailsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Food Details"
+    BackgroundColor="{StaticResource Secondary}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!--  🔥 FOOD IMAGE CARD  -->
+            <Frame
+                Padding="0"
+                BackgroundColor="#1E1E1E"
+                CornerRadius="20"
+                HasShadow="True">
+
+                <Image
+                    Aspect="AspectFill"
+                    HeightRequest="{OnIdiom Phone=290,
+                                            Desktop=300}"
+                    Source="{Binding Image}"
+                    WidthRequest="{OnIdiom Phone=290,
+                                           Desktop=300}" />
+            </Frame>
+
+            <!--  🔥 FOOD NAME  -->
+            <Label
+                FontAttributes="Bold"
+                FontSize="26"
+                Text="{Binding Name}"
+                TextColor="White" />
+
+            <!--  🔥 CALORIES BADGE  -->
+            <Frame
+                Padding="10,5"
+                BackgroundColor="#4CAF50"
+                CornerRadius="15"
+                HorizontalOptions="Start">
+
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="16"
+                    Text="{Binding Calories, StringFormat='{0} kcal'}"
+                    TextColor="White" />
+            </Frame>
+
+            <!--  🔥 DESCRIPTION CARD  -->
+            <Frame
+                Padding="15"
+                BackgroundColor="#1E1E1E"
+                CornerRadius="15">
+
+                <VerticalStackLayout Spacing="8">
+
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Description"
+                        TextColor="White" />
+
+                    <Label
+                        FontSize="14"
+                        Text="{Binding Description}"
+                        TextColor="Gray" />
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <!--  🔥 BENEFITS CARD  -->
+            <Frame
+                Padding="15"
+                BackgroundColor="#1E1E1E"
+                CornerRadius="15">
+
+                <VerticalStackLayout Spacing="10">
+
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Benefits"
+                        TextColor="White" />
+
+                    <CollectionView ItemsSource="{Binding Benefits}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <HorizontalStackLayout Spacing="10">
+
+                                    <!--  🔹 Bullet  -->
+                                    <Label
+                                        FontSize="14"
+                                        Text="✔"
+                                        TextColor="#4CAF50" />
+
+                                    <!--  🔹 Benefit Text  -->
+                                    <Label
+                                        FontSize="14"
+                                        Text="{Binding .}"
+                                        TextColor="LightGray" />
+
+                                </HorizontalStackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

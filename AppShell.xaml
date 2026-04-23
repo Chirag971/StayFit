@@ -24,6 +24,7 @@
 
     <ShellContent ContentTemplate="{DataTemplate local:LoginPage}" Route="LoginPage" />
 
+    <!--<ShellContent ContentTemplate="{DataTemplate local:FitnessPage}" Route="FitnessPage" />-->
 
     <!--<TabBar>
         <ShellContent
@@ -55,9 +56,7 @@
         <Tab Title="Profile" Icon="profile.png">
             <ShellContent ContentTemplate="{DataTemplate local:ProfilePage}" Route="ProfilePage" />
         </Tab>
-        <Tab Title="Reminder" Icon="reminder.png">
-            <ShellContent ContentTemplate="{DataTemplate local:ReminderPage}" Route="RemindePage" />
-        </Tab>
+
     </TabBar>
 
     <FlyoutItem

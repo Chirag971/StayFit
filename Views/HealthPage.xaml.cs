@@ -14,4 +14,5 @@ public partial class HealthPage : ContentPage
     //    base.OnAppearing();
     //    await ((HealthPageViewModel)BindingContext).LoadArticlesAsync();
     //}
+
 }

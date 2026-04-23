@@ -7,20 +7,64 @@
     BackgroundColor="{StaticResource Secondary}">
 
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="15">
 
-            <Image
-                Aspect="AspectFill"
-                HeightRequest="250"
-                Source="{Binding Article.Image}" />
+        <VerticalStackLayout Spacing="15">
 
-            <Label
-                FontAttributes="Bold"
-                FontSize="24"
-                Text="{Binding Article.Title}" />
+            <!--  🔥 RESPONSIVE IMAGE  -->
+            <Grid>
+                <Grid.HeightRequest>
+                    <OnIdiom
+                        x:TypeArguments="x:Double"
+                        Desktop="320"
+                        Phone="220"
+                        Tablet="260" />
+                </Grid.HeightRequest>
 
-            <Label FontSize="16" Text="{Binding Article.Description}" />
+                <Image
+                    Margin="10"
+                    Aspect="AspectFit"
+                    HorizontalOptions="Fill"
+                    Source="{Binding Article.Image}"
+                    VerticalOptions="Fill" />
+            </Grid>
+
+
+            <VerticalStackLayout Padding="15" Spacing="10">
+
+
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="24"
+                    Text="{Binding Article.Title}"
+                    TextColor="{StaticResource TextPrimary}" />
+
+                <BoxView
+                    HeightRequest="1"
+                    Opacity="0.3"
+                    Color="{StaticResource TextSecondary}" />
+
+
+                <Label
+                    FontSize="16"
+                    LineHeight="1.4"
+                    Text="{Binding Article.Description}"
+                    TextColor="{StaticResource TextSecondary}" />
+
+                <Button
+                    Margin="25"
+                    BackgroundColor="{StaticResource CardBg}"
+                    Command="{Binding ShareCommand}"
+                    CornerRadius="12"
+                    HeightRequest="50"
+                    ImageSource="share.png"
+                    Text=" Share Article"
+                    TextColor="White"
+                    WidthRequest="153" />
+
+            </VerticalStackLayout>
 
         </VerticalStackLayout>
+
     </ScrollView>
+
 </ContentPage>

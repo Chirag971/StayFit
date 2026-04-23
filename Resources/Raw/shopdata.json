@@ -7,6 +7,10 @@
         {
             "name": "Fitness Gear",
             "iconPath": "gear.png"
+        },
+        {
+            "name": "shoes",
+            "iconPath": "shoes.png"
         }
     ],
     "products": [
@@ -54,6 +58,52 @@
             "shortDescription": "Comfortable yoga mat",
             "fullDescription": "Perfect for yoga and workouts."
         },
+        {
+            "title": "Fitness Watch",
+            "brandName": "FitWatch",
+            "price": 2299,
+            "priceText": "₹2,299",
+            "imageSource": "watch.jpg",
+            "rating": 4.4,
+            "section": "Gear",
+            "shortDescription": "Track fitness activity",
+            "fullDescription": "Smart watch with fitness tracking."
+        },
+        {
+            "title": "Skipping Rope",
+            "brandName": "SpeedFit",
+            "price": 299,
+            "priceText": "₹299",
+            "imageSource": "rope.jpg",
+            "rating": 4.0,
+            "section": "Gear",
+            "shortDescription": "Cardio exercise tool",
+            "fullDescription": "Best for cardio workouts."
+        },
+
+        {
+            "title": "Fitness Watch",
+            "brandName": "FitWatch",
+            "price": 2299,
+            "priceText": "₹2,299",
+            "imageSource": "watch.jpg",
+            "rating": 4.4,
+            "section": "Gear",
+            "shortDescription": "Track fitness activity",
+            "fullDescription": "Smart watch with fitness tracking."
+        },
+        {
+            "title": "Skipping Rope",
+            "brandName": "SpeedFit",
+            "price": 299,
+            "priceText": "₹299",
+            "imageSource": "rope.jpg",
+            "rating": 4.0,
+            "section": "Gear",
+            "shortDescription": "Cardio exercise tool",
+            "fullDescription": "Best for cardio workouts."
+        },
+
         {
             "title": "Fitness Watch",
             "brandName": "FitWatch",

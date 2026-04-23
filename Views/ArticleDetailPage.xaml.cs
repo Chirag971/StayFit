@@ -9,4 +9,5 @@ public partial class ArticleDetailPage : ContentPage
 		InitializeComponent();
 		BindingContext = viewModel;
 	}
+  
 }	

@@ -1,12 +1,9 @@
 ﻿using System.Collections.ObjectModel;
-using System.Security.Cryptography;
 using System.Text.Json;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Newtonsoft.Json;
 using StayFitz.Models;
 using StayFitz.Services;
-using StayFitz.Utilities;
 using StayFitz.ViewModel;
 using StayFitz.Views;
 

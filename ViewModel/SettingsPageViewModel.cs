@@ -119,7 +119,7 @@ namespace StayFitz.ViewModels
             if (!string.IsNullOrEmpty(savedImage))
                 ProfileImage = ImageSource.FromFile(savedImage);
             else
-                ProfileImage = "dotnet_bot.png";
+                ProfileImage = "profile.png";
         }
 
         private async Task UploadPhoto()

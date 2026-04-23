@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using StayFitz.Models;
 using System.Windows.Input;
-using StayFitz.Utilities;
+using StayFitz.Models;
+using StayFitz.Views;
 
 namespace StayFitz.ViewModel
 {
@@ -18,13 +13,39 @@ namespace StayFitz.ViewModel
         void OnPropertyChanged([CallerMemberName] string name = null)
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 
-        // Profile Info
-        public string UserName { get; set; } = "abc";
-        public string Email { get; set; } = "abc@example.com";
-        public string ProfileImage { get; set; } = "profile.png";
+        //public string UserName { get; set; } = "User";
+        //public string Email { get; set; } = "user250@example.com";
+
+        private string userName;
+        public string UserName
+        {
+            get => userName;
+            set
+            {
+                userName = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string email;
+        public string Email
+        {
+            get => email;
+            set
+            {
+                email = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+
+        public string ProfileImage { get; set; } = "user.png";
         public bool IsPremium { get; set; } = true;
 
-        // Collections
+        public ICommand NavigateCommand { get; }
+
+        //
         public ObservableCollection<ProfileStatModel> Stats { get; set; }
         public ObservableCollection<SettingItemModel> Settings { get; set; }
 
@@ -33,6 +54,12 @@ namespace StayFitz.ViewModel
 
         public ProfileViewModel()
         {
+            if (UserSession.CurrentUser != null)
+            {
+                UserName = UserSession.CurrentUser.Pin;     
+                Email = UserSession.CurrentUser.Password;  
+            }
+
             Stats = new ObservableCollection<ProfileStatModel>
             {
                 new ProfileStatModel
@@ -63,25 +90,44 @@ namespace StayFitz.ViewModel
                     Icon="sleep.png",
                     BackgroundColor="#EDE7FF"
                 }
+
+
             };
 
             Settings = new ObservableCollection<SettingItemModel>
             {
-                new SettingItemModel{ Title="Notifications", Icon="notification.png"},
+                //new SettingItemModel{ Title="Notifications", Icon="notification.png"},
                 new SettingItemModel{ Title="Reminders", Icon="reminder.png"},
                 new SettingItemModel{ Title="Fitness Goals", Icon="goals.png"},
-                new SettingItemModel{ Title="Favorite Activities", Icon="favorite.png"}
+                new SettingItemModel { Title = "Settings ", Icon = "setting.png" },
+                //new SettingItemModel{ Title="Favorite Activities", Icon="favorite.png"}
             };
 
-            EditProfileCommand = new Command(async () =>
+            //EditProfileCommand = new Command(async () =>
+            //{
+            //    await Application.Current.MainPage.DisplayAlert(MessageConstants.EditProfileTitle,MessageConstants.EditProfileMessage,MessageConstants.Ok);
+            //});
+
+            //ViewProgressCommand = new Command(async () =>
+            //{
+            //    await Application.Current.MainPage.DisplayAlert(MessageConstants.Progress,MessageConstants.ViewProgressMessage, MessageConstants.Ok);
+            //});
+
+            NavigateCommand = new Command<SettingItemModel>(async (item) =>
             {
-                await Application.Current.MainPage.DisplayAlert(MessageConstants.EditProfileTitle,MessageConstants.EditProfileMessage,MessageConstants.Ok);
+                if (item == null) return;
+
+                if (item.Title == "Reminders")
+                {
+                    await Application.Current.MainPage.Navigation.PushAsync(new ReminderPage());
+                }
+                if (item.Title == "Fitness Goals")
+                {
+                    await Application.Current.MainPage.Navigation.PushAsync(new FitnessGoalPage());
+                }
             });
 
-            ViewProgressCommand = new Command(async () =>
-            {
-                await Application.Current.MainPage.DisplayAlert(MessageConstants.Progress,MessageConstants.ViewProgressMessage, MessageConstants.Ok);
-            });
+            
         }
     }
 }

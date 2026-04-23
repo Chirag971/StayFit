@@ -1,4 +1,6 @@
-﻿namespace StayFitz.Models
+﻿using StayFitz.Models.StayFitz.Models;
+
+namespace StayFitz.Models
 {
     public class ShopData
     {

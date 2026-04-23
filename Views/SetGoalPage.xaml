@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="StayFitz.Views.SetGoalPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="SetGoalPage">
+
+
+    <VerticalStackLayout Padding="20" Spacing="20">
+
+        <Label
+            FontSize="25"
+            HorizontalOptions="Center"
+            Text="Set Goal"
+            TextColor="{StaticResource TextPrimary}" />
+
+        <Entry
+            Keyboard="Numeric"
+            Placeholder="Steps Goal"
+            Text="{Binding StepsGoal}" />
+        <Entry
+            Keyboard="Numeric"
+            Placeholder="Calories Goal"
+            Text="{Binding CaloriesGoal}" />
+        <Entry
+            Keyboard="Numeric"
+            Placeholder="Sleep Goal (hours)"
+            Text="{Binding SleepGoal}" />
+
+        <Button
+            BackgroundColor="{StaticResource Primary}"
+            Command="{Binding SaveCommand}"
+            Text="Save Goals" />
+
+    </VerticalStackLayout>
+</ContentPage>

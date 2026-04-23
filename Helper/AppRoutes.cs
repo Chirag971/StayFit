@@ -24,6 +24,9 @@ namespace StayFitz.Helper
             Routing.RegisterRoute(nameof(ProgressPage), typeof(ProgressPage));
             //Routing.RegisterRoute(nameof(SettingsPage), typeof(SettingsPage));
             Routing.RegisterRoute(nameof(ReminderPage), typeof(ReminderPage));
+            Routing.RegisterRoute(nameof(WishlistPage), typeof(WishlistPage));
+            Routing.RegisterRoute(nameof(CartPage), typeof(CartPage));
+            Routing.RegisterRoute(nameof(RecipesPage), typeof(RecipesPage));
          
         }
     }

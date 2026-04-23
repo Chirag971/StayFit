@@ -2,6 +2,7 @@
 using StayFitz.Models;
 using StayFitz.Utilities;
 using StayFitz.ViewModels;
+using UserSession = StayFitz.Utilities.UserSession;
 
 
 namespace StayFitz.Views;
